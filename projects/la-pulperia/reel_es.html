@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Anton;src:url(../../shared/fonts/anton-latin-400-normal.woff2)}
+@font-face{font-family:Inter;font-weight:400;src:url(../../shared/fonts/inter-latin-400-normal.woff2)}
+@font-face{font-family:Inter;font-weight:700;src:url(../../shared/fonts/inter-latin-700-normal.woff2)}
+@font-face{font-family:Inter;font-weight:800;src:url(../../shared/fonts/inter-latin-800-normal.woff2)}
+:root{--bg:#0a0e11;--pain:#ff3b3b;--teal:#2ba3c6;--sand:#f4e2b8;--txt:#f4f1ea;--mute:#8a8f96}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg);font-family:Inter,sans-serif;color:var(--txt)}
+#stage{position:absolute;inset:0;overflow:hidden}
+.abs{position:absolute;will-change:transform,opacity}
+.full{left:0;top:0;width:1080px;height:1920px}
+.big{font-family:Anton;line-height:.92;letter-spacing:1px}
+.ctr{left:0;width:1080px;text-align:center}
+.cap{font-weight:800;font-size:56px;line-height:1.15}
+.phone{width:576px;padding:18px;border-radius:64px;background:#1f2326;box-shadow:0 0 0 3px #394047,0 40px 120px rgba(0,0,0,.7)}
+.screen{width:540px;height:1065px;border-radius:46px;overflow:hidden;position:relative;background:#000}
+.screen img{width:540px;display:block}
+.stamp{font-family:Anton;font-size:84px;letter-spacing:3px;color:var(--pain);border:8px solid var(--pain);border-radius:16px;padding:6px 26px 0;background:rgba(10,14,17,.82);white-space:nowrap}
+.chip{font-weight:800;font-size:40px;padding:16px 26px;border-radius:14px;background:var(--teal);color:#fff;white-space:nowrap;box-shadow:0 12px 40px rgba(43,163,198,.4)}
+.chip .x{margin-right:12px;color:var(--sand)}
+.label{font-family:Anton;font-size:52px;letter-spacing:3px}
+.btn{font-size:42px;font-weight:800;padding:26px 0;border-radius:999px;background:var(--sand);color:#0a0e11;text-align:center}
+</style></head>
+<body><div id="stage">
+  <div id="bgPain" class="abs full" style="background:radial-gradient(ellipse at 50% 35%,#3a0f12 0%,#0a0e11 65%)"></div>
+  <div id="bgTeal" class="abs full" style="background:radial-gradient(ellipse at 50% 40%,#0f3a48 0%,#0a0e11 68%);opacity:0"></div>
+
+  <!-- HOOK -->
+  <div id="h1" class="abs big ctr" style="top:300px;font-size:200px">¿TU WEB</div>
+  <div id="h2" class="abs big ctr" style="top:490px;font-size:150px;color:var(--pain)">NO CONVIERTE?</div>
+
+  <!-- DOLORE: didascalie -->
+  <div id="c1" class="abs cap ctr" style="top:300px">Un turista te busca<br>en Google…</div>
+  <div id="c2" class="abs cap ctr" style="top:300px">…y encuentra <span style="color:var(--pain)">esto.</span></div>
+  <div id="c3" class="abs cap ctr" style="top:300px">…y se va a<br><span style="color:var(--pain)">la competencia.</span></div>
+
+  <!-- telefono vecchio (dolore) -->
+  <div id="pOld" class="abs phone" style="left:252px;top:470px"><div class="screen"><img id="oldImg" src="assets/old.jpg"></div></div>
+  <div id="s1" class="abs stamp" style="left:250px;top:760px">SIN FOTOS</div>
+  <div id="s2" class="abs stamp" style="left:330px;top:1010px">SIN HORARIOS</div>
+  <div id="s3" class="abs stamp" style="left:200px;top:1260px">SIN DIRECCIÓN</div>
+
+  <!-- SVOLTA -->
+  <div id="t1" class="abs cap ctr" style="top:520px;font-size:52px;color:var(--sand)">Hasta que llega…</div>
+  <div id="ring" class="abs" style="left:240px;top:560px;width:600px;height:600px;border-radius:50%;border:6px solid var(--teal)"></div>
+  <img id="logoBig" class="abs" src="../../shared/brand/logo_fd.png" style="left:190px;top:620px;width:700px">
+
+  <!-- SOLUZIONE -->
+  <div id="sTop" class="abs ctr" style="top:250px">
+    <div class="big" style="font-size:120px;color:var(--sand)">MISMAS TAPAS.</div>
+    <div class="big" style="font-size:120px;color:var(--teal);margin-top:6px">OTRA WEB.</div>
+  </div>
+  <div id="pNew" class="abs phone" style="left:252px;top:520px"><div class="screen">
+    <img id="aimg" src="build/frames/f_0000.jpg">
+    <img id="oldCover" src="assets/old.jpg" style="position:absolute;left:0;top:0">
+    <div id="wipeBar" style="position:absolute;left:0;width:540px;height:60px;background:var(--teal);box-shadow:0 0 60px 20px rgba(43,163,198,.7)"></div>
+  </div></div>
+  <div id="k0" class="abs chip" style="top:1280px"><span class="x">✓</span>Nuevo look, en 3 idiomas</div>
+  <div id="k1" class="abs chip" style="top:1280px"><span class="x">✓</span>Carta digital completa</div>
+  <div id="k2" class="abs chip" style="top:1280px"><span class="x">✓</span>Fotos del local</div>
+  <div id="k3" class="abs chip" style="top:1280px"><span class="x">✓</span>Horarios, dirección y mapa</div>
+  <div id="k4" class="abs chip" style="top:1280px"><span class="x">✓</span>Reseñas ★★★★★</div>
+  <div id="k5" class="abs chip" style="top:1280px"><span class="x">✓</span>Las dudas, ya resueltas</div>
+
+  <!-- RISULTATO -->
+  <div id="r" class="abs full">
+    <div id="rT1" class="abs cap ctr" style="top:250px;color:var(--mute)">De una lista de enlaces…</div>
+    <div id="rT2" class="abs cap ctr" style="top:330px">…a una web que <span style="color:var(--teal)">trabaja por ti.</span></div>
+    <div id="rL" class="abs" style="left:130px;top:470px;width:380px;text-align:center">
+      <div class="label" style="color:var(--pain);margin-bottom:14px">ANTES</div>
+      <div class="phone" style="transform:scale(.66);transform-origin:top left"><div class="screen"><img src="assets/old.jpg" style="filter:grayscale(1) brightness(.75)"></div></div>
+    </div>
+    <div id="rR" class="abs" style="left:570px;top:470px;width:380px;text-align:center">
+      <div class="label" style="color:var(--teal);margin-bottom:14px">DESPUÉS</div>
+      <div class="phone" style="transform:scale(.66);transform-origin:top left"><div class="screen"><img src="build/frames/f_0000.jpg"></div></div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div id="cta" class="abs full">
+    <img id="cLogo" class="abs" src="../../shared/brand/logo_fd.png" style="left:240px;top:430px;width:600px">
+    <div id="cQ" class="abs big ctr" style="top:880px;font-size:118px">¿TU LOCAL ES<br><span style="color:var(--teal)">EL SIGUIENTE?</span></div>
+    <div id="cB" class="abs btn" style="left:220px;width:640px;top:1180px">Escríbenos por DM →</div>
+    <div id="cS" class="abs ctr" style="top:1320px;font-size:34px;font-weight:700;color:var(--sand);letter-spacing:4px">DISEÑO WEB · FUERTEVENTURA</div>
+  </div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=x=>Math.max(0,Math.min(1,x));
+const eo=x=>1-Math.pow(1-cl(x),3);
+const ei=x=>Math.pow(cl(x),3);
+const eio=x=>{x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
+const back=x=>{x=cl(x);const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const seg=(t,a,b)=>cl((t-a)/(b-a));
+const win=(t,a,b,f=.25)=>cl(seg(t,a,a+f))*(1-seg(t,b-f,b)); // fade in/out in una finestra
+function set(id,o,tf){const e=$(id);e.style.opacity=o;e.style.transform=tf||'none'}
+const SCROLL0=11.2;
+
+window.render=function(t){
+  // sfondi: rosso -> teal alla svolta
+  const toTeal=eio(seg(t,8.6,9.4));
+  $('bgPain').style.opacity=1-toTeal; $('bgTeal').style.opacity=toTeal;
+
+  // HOOK (0 - 2.4): slam con micro-shake
+  const sh=t<2.4?Math.sin(t*90)*6*(1-seg(t,0,.5)):0;
+  const sh2=t<2.4?Math.sin(t*80)*6*(1-seg(t,.25,.75)):0;
+  set('h1', cl(seg(t,0,.08))*(1-seg(t,2.25,2.5)), `translate(${sh}px,${-seg(t,2.25,2.5)*80}px) scale(${1.5-.5*eo(seg(t,0,.22))})`);
+  set('h2', cl(seg(t,.25,.33))*(1-seg(t,2.25,2.5)), `translate(${sh2}px,${-seg(t,2.25,2.5)*80}px) scale(${1.5-.5*eo(seg(t,.25,.47))})`);
+
+  // DOLORE (2.4 - 8.4)
+  set('c1', win(t,2.5,4.0), `translateY(${(1-eo(seg(t,2.5,2.9)))*30}px)`);
+  set('c2', win(t,4.0,6.85), `translateY(${(1-eo(seg(t,4.0,4.4)))*30}px)`);
+  set('c3', win(t,6.9,8.3), `translateY(${(1-eo(seg(t,6.9,7.3)))*30}px)`);
+  // telefono vecchio: sale storto nel hook, si raddrizza a 4.0, cade a 7.8
+  const rise=eo(seg(t,.6,1.4)), straight=eio(seg(t,3.9,4.5)), fall=ei(seg(t,7.7,8.35));
+  const rot=-6*(1-straight)+14*fall, ty=(1-rise)*1400 + (1-straight)*330 + fall*1500;
+  set('pOld', t<8.4?1:0, `translateY(${ty}px) rotate(${rot}deg)`);
+  const grey=seg(t,6.9,7.6); $('oldImg').style.filter=`grayscale(1) brightness(${1-.45*grey})`;
+  // timbri
+  [['s1',5.0,-8],['s2',5.6,6],['s3',6.2,-4]].forEach(([id,s,r])=>{
+    const k=seg(t,s,s+.18);
+    set(id, (t>=s?1:0)*(t<8.4?1:0), `translateY(${fall*1500}px) rotate(${r+14*fall}deg) scale(${2.2-1.2*eo(k)})`);
+  });
+
+  // SVOLTA (8.4 - 10.2)
+  set('t1', win(t,8.45,9.15,.2), `translateY(${(1-eo(seg(t,8.45,8.75)))*20}px)`);
+  const lg=seg(t,9.0,9.45), lgOut=seg(t,10.0,10.35);
+  set('logoBig', cl(lg*2)*(1-lgOut), `scale(${(.6+.4*back(lg))*(1-.3*lgOut)})`);
+  const rg=seg(t,9.0,9.9);
+  set('ring', t>9&&t<9.9?(1-rg):0, `scale(${.5+1.3*eo(rg)})`);
+
+  // SOLUZIONE (10.2 - 21.2)
+  const solIn=eo(seg(t,10.2,10.8)), solOut=seg(t,21.0,21.35);
+  set('sTop', (t>10.1?1:0)*cl(seg(t,10.3,10.6))*(1-solOut), `translateY(${(1-eo(seg(t,10.3,10.7)))*-40}px)`);
+  set('pNew', (t>10.1?1:0)*(1-solOut), `translateY(${(1-solIn)*1400}px) scale(${1-.08*solOut})`);
+  // tendina interna: il vecchio sito viene "trasformato" dall'alto verso il basso
+  const wp=eio(seg(t,10.8,11.3));
+  $('oldCover').style.clipPath=`inset(${wp*100}% 0 0 0)`;
+  $('wipeBar').style.top=(wp*1065-30)+'px';
+  $('wipeBar').style.opacity=t>10.8&&t<11.35?1:0;
+  const fi=Math.max(0,Math.min(299,Math.round((t-SCROLL0)*30)));
+  window.__frame='build/frames/f_'+String(fi).padStart(4,'0')+'.jpg';
+  [['k0',.3,1.3,60,-1],['k1',2.4,3.1,420,1],['k2',4.2,5.0,60,-1],['k3',6.0,6.7,360,1],['k4',7.7,8.4,60,-1],['k5',9.35,9.8,380,1]].forEach(([id,s,e,x,dir])=>{
+    s+=SCROLL0; e+=SCROLL0;
+    const k=back(seg(t,s,s+.4)); const el=$(id);
+    el.style.left=x+'px';
+    el.style.opacity=cl(seg(t,s,s+.12))*(1-seg(t,e,e+.2));
+    el.style.transform=`translateX(${(1-k)*dir*300}px) rotate(${dir*-2}deg)`;
+  });
+
+  // RISULTATO (21.2 - 23.7)
+  const rv=t>21.15&&t<23.8, rOut=seg(t,23.45,23.75);
+  $('r').style.opacity=rv?1-rOut:0;
+  set('rL', eo(seg(t,21.25,21.7)), `translateX(${(1-eo(seg(t,21.25,21.7)))*-500}px)`);
+  set('rR', eo(seg(t,21.35,21.8)), `translateX(${(1-eo(seg(t,21.35,21.8)))*500}px)`);
+  set('rT1', eo(seg(t,21.4,21.7)));
+  set('rT2', eo(seg(t,22.0,22.35)), `translateY(${(1-eo(seg(t,22.0,22.35)))*20}px)`);
+
+  // CTA (23.7 - 28)
+  $('cta').style.opacity=t>23.7?1:0;
+  set('cLogo', eo(seg(t,23.75,24.2)), `scale(${.85+.15*back(seg(t,23.75,24.25))})`);
+  set('cQ', eo(seg(t,24.3,24.7)), `translateY(${(1-eo(seg(t,24.3,24.7)))*40}px)`);
+  const pulse=t>25.4?1+.035*Math.sin((t-25.4)*7):1;
+  set('cB', eo(seg(t,24.8,25.2)), `scale(${back(seg(t,24.8,25.25))*pulse})`);
+  set('cS', eo(seg(t,25.2,25.6)));
+};
+render(0);
+</script>
+</body></html>
