@@ -12,7 +12,7 @@ Ogni video è una pagina HTML animata (`window.render(t)`) renderizzata fotogram
 engine/
   record.js   registra lo scroll del sito in formato telefono (390×769 @2x) con animazioni CSS a tempo controllato
   render.js   renderizza una pagina HTML animata in MP4 (o un fotogramma singolo con --still)
-  sfx.py      genera gli effetti sonori (thump, whoosh, pop) e li mixa sugli istanti indicati
+  sfx.py      genera gli effetti sonori (thump, whoosh, pop, tick) e li mixa sugli istanti indicati
 shared/
   fonts/      Anton + Inter (woff2)
   brand/      logo Fuerte Digitales (scritta bianca: pensato per sfondi scuri)
@@ -28,6 +28,11 @@ projects/
     post_caption_ES.md   testo del post per Instagram
     build.sh             rigenera tutti i video
     output/              video finali + copertina del reel
+  twinny-singlefin/
+    assets/favicon.png, assets/scroll.mp4   favicon e scroll di singlefinburger.com
+    reel_pov_es.html     reel POV: ricerca → risultato → giornata dal pranzo al tramonto → CTA
+    reel_sfx.json, scroll.json, post_caption_ES.md, build.sh
+    output/              reel + copertina
 ```
 
 ## Requisiti

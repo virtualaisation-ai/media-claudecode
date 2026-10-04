@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Anton;src:url(../../shared/fonts/anton-latin-400-normal.woff2)}
+@font-face{font-family:Inter;font-weight:400;src:url(../../shared/fonts/inter-latin-400-normal.woff2)}
+@font-face{font-family:Inter;font-weight:700;src:url(../../shared/fonts/inter-latin-700-normal.woff2)}
+@font-face{font-family:Inter;font-weight:800;src:url(../../shared/fonts/inter-latin-800-normal.woff2)}
+:root{--ink:#14202b;--blue:#2f86b3;--orange:#f0782f;--teal:#2ba3c6;--sand:#f4e2b8;--night:#0a0e11}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--night);font-family:Inter,"Noto Color Emoji",sans-serif;color:var(--ink)}
+#stage{position:absolute;inset:0;overflow:hidden}
+.abs{position:absolute;will-change:transform,opacity}
+.full{left:0;top:0;width:1080px;height:1920px}
+.ctr{left:0;width:1080px;text-align:center}
+.big{font-family:Anton,"Noto Color Emoji";line-height:.95;letter-spacing:1px}
+.cap{font-weight:800;font-size:54px;line-height:1.18}
+.search{left:90px;width:900px;height:130px;border-radius:65px;background:#fff;display:flex;align-items:center;padding:0 44px;gap:28px;
+  box-shadow:0 20px 60px rgba(20,32,43,.18);font-size:40px;font-weight:700;color:var(--ink)}
+.cursor{display:inline-block;width:4px;height:46px;background:var(--blue);vertical-align:middle;margin-left:4px}
+.card{left:90px;width:900px;border-radius:36px;background:#fff;padding:40px 44px;box-shadow:0 30px 80px rgba(20,32,43,.22)}
+.card .row{display:flex;align-items:center;gap:22px;font-size:30px;color:#5b6670}
+.card .fav{width:72px;height:72px;border-radius:50%;background:#fff3e2;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.card .fav img{width:64px}
+.card h3{font-size:46px;line-height:1.18;margin:26px 0 18px;color:#123a63}
+.card .stars{font-size:34px;font-weight:700;color:#333}
+.card .stars b{color:#e8a315}
+.card .meta{font-size:30px;color:#5b6670;margin-top:10px}
+.ripple{width:140px;height:140px;border-radius:50%;background:rgba(47,134,179,.35)}
+.phone{width:576px;padding:18px;border-radius:64px;background:#1f2326;box-shadow:0 0 0 3px #394047,0 40px 120px rgba(0,0,0,.45)}
+.screen{width:540px;height:1065px;border-radius:46px;overflow:hidden;position:relative;background:#000}
+.screen img{width:540px;display:block}
+.chip{font-weight:800;font-size:40px;padding:18px 28px;border-radius:16px;background:#fff;color:var(--ink);white-space:nowrap;box-shadow:0 14px 40px rgba(0,0,0,.25)}
+.btn{font-size:42px;font-weight:800;padding:26px 0;border-radius:999px;background:var(--sand);color:var(--night);text-align:center}
+</style></head>
+<body><div id="stage">
+  <div id="bgDay" class="abs full" style="background:linear-gradient(180deg,#a9dcf7 0%,#e9f6fb 45%,#fff3dc 100%)"></div>
+  <div id="bgSun" class="abs full" style="background:linear-gradient(180deg,#3b2a6b 0%,#c2456b 45%,#f58a3c 80%,#ffc56b 100%);opacity:0"></div>
+  <div id="bgNight" class="abs full" style="background:radial-gradient(ellipse at 50% 40%,#0f3a48 0%,#0a0e11 68%);opacity:0"></div>
+
+  <!-- HOOK -->
+  <div id="pov" class="abs big ctr" style="top:300px;font-size:150px;color:var(--ink)">POV:</div>
+  <div id="povT" class="abs cap ctr" style="top:470px;padding:0 90px">tienes hambre, estás en Corralejo… y quieres <span style="color:var(--blue)">vistas al mar</span> 🌊</div>
+  <div id="search" class="abs search" style="top:860px">
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#5b6670" stroke-width="2.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="7"/><path d="M16 16l5 5"/></svg>
+    <span><span id="typed"></span><span id="cur" class="cursor"></span></span>
+  </div>
+  <div id="rip1" class="abs ripple" style="left:870px;top:855px"></div>
+
+  <!-- RISULTATO -->
+  <div id="found" class="abs cap ctr" style="top:330px">…y aparece <span style="color:var(--orange)">esto</span> 👇</div>
+  <div id="card" class="abs card" style="top:720px">
+    <div class="row"><div class="fav"><img src="assets/favicon.png"></div><div><div style="color:var(--ink);font-weight:700">Twinny &amp; Single Fin</div>singlefinburger.com</div></div>
+    <h3>Hamburguesas y cócteles frente al mar en Corralejo</h3>
+    <div class="stars">4,8 <b>★★★★★</b> · +1.500 reseñas</div>
+    <div class="meta">Burgers de día · Cócteles al atardecer</div>
+  </div>
+  <div id="rip2" class="abs ripple" style="left:470px;top:860px"></div>
+
+  <!-- SCROLL -->
+  <div id="tod" class="abs ctr" style="top:270px">
+    <div id="todDay" class="big" style="font-size:118px;color:var(--blue)">☀️ DE DÍA</div>
+    <div id="todSun" class="big" style="font-size:118px;color:#fff;position:absolute;left:0;top:0;width:1080px">🌅 AL ATARDECER</div>
+  </div>
+  <div id="ph" class="abs phone" style="left:252px;top:430px;transform-origin:50% 0"><div class="screen"><img id="aimg" src="build/frames/f_0000.jpg"></div></div>
+  <div id="k0" class="abs chip" style="top:1240px">🏄 Una casa, dos almas</div>
+  <div id="k1" class="abs chip" style="top:1240px">🌊 Dos terrazas frente al mar</div>
+  <div id="k2" class="abs chip" style="top:1240px">🍔 13 burgers · 4 versiones</div>
+  <div id="k3" class="abs chip" style="top:1240px">🍹 37 cócteles</div>
+  <div id="k4" class="abs chip" style="top:1240px">🍸 Happy Hour a 5€</div>
+  <div id="k5" class="abs chip" style="top:1240px">⭐ 4,8 · +1.500 reseñas</div>
+  <div id="k6" class="abs chip" style="top:1240px">📲 Reserva por WhatsApp</div>
+
+  <!-- TWIST + CTA -->
+  <div id="tw1" class="abs big ctr" style="top:620px;font-size:120px;color:#fff">TUS CLIENTES<br>YA TE ESTÁN<br>BUSCANDO.</div>
+  <div id="tw2" class="abs big ctr" style="top:1060px;font-size:120px;color:var(--teal)">¿QUÉ ENCUENTRAN?</div>
+  <div id="cta" class="abs full">
+    <img id="cLogo" class="abs" src="../../shared/brand/logo_fd.png" style="left:240px;top:400px;width:600px">
+    <div id="cQ" class="abs cap ctr" style="top:830px;color:#fff;font-size:56px">Diseñamos la web que<br><span style="color:var(--teal)">tus clientes quieren encontrar.</span></div>
+    <div id="cB" class="abs btn" style="left:220px;width:640px;top:1060px">Escríbenos por DM →</div>
+    <div id="cS" class="abs ctr" style="top:1200px;font-size:34px;font-weight:700;color:var(--sand);letter-spacing:4px">DISEÑO WEB · FUERTEVENTURA</div>
+  </div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=x=>Math.max(0,Math.min(1,x));
+const eo=x=>1-Math.pow(1-cl(x),3);
+const eio=x=>{x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
+const back=x=>{x=cl(x);const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const seg=(t,a,b)=>cl((t-a)/(b-a));
+function set(id,o,tf){const e=$(id);e.style.opacity=o;e.style.transform=tf||'none'}
+const QUERY='burger y cócteles con vista al mar';
+const T0=6.4;           // inizio dello scroll registrato
+const SUN=T0+6.8;       // arrivo alla sezione "Beber": dal giorno al tramonto
+
+window.render=function(t){
+  // sfondi: giorno -> tramonto -> notte (twist/CTA)
+  const sun=eio(seg(t,SUN-.5,SUN+.5)), night=eio(seg(t,21.3,21.9));
+  $('bgSun').style.opacity=sun*(1-night); $('bgNight').style.opacity=night; $('bgDay').style.opacity=1-night;
+
+  // HOOK (0 - 3.3)
+  const hookOut=seg(t,3.2,3.5);
+  set('pov', eo(seg(t,0,.25))*(1-hookOut), `scale(${1.4-.4*eo(seg(t,0,.25))})`);
+  set('povT', eo(seg(t,.25,.6))*(1-hookOut), `translateY(${(1-eo(seg(t,.25,.6)))*30}px)`);
+  const n=Math.round(QUERY.length*cl((t-.8)/2.0));
+  $('typed').textContent=QUERY.slice(0,n);
+  $('cur').style.opacity=(Math.floor(t*2.5)%2===0||t<2.9)?1:0;
+  const sUp=eio(seg(t,3.3,3.8));
+  set('search', eo(seg(t,.4,.8))*(1-seg(t,5.5,5.8)), `translateY(${(1-eo(seg(t,.4,.8)))*60 - sUp*300}px)`);
+  const r1=seg(t,3.0,3.45);
+  set('rip1', t>3&&t<3.45?(1-r1):0, `scale(${.3+1.2*r1})`);
+
+  // RISULTATO (3.3 - 6.0)
+  set('found', eo(seg(t,3.5,3.8))*(1-seg(t,5.5,5.8)), `translateY(${(1-eo(seg(t,3.5,3.8)))*20}px)`);
+  const cIn=back(seg(t,3.7,4.2)), cOut=eio(seg(t,5.5,6.1));
+  set('card', cl(seg(t,3.7,3.85))*(1-cOut), `translateY(${(1-cIn)*200}px) scale(${1+cOut*.25})`);
+  const r2=seg(t,5.0,5.45);
+  set('rip2', t>5&&t<5.45?(1-r2):0, `scale(${.3+1.4*r2})`);
+
+  // SCROLL (6.4 - 21.4)
+  const phIn=eo(seg(t,5.7,6.4)), phOut=eio(seg(t,21.1,21.5));
+  set('ph', t>5.6&&t<21.6?1:0, `translateY(${(1-phIn)*1400 + phOut*1500}px) scale(.92)`);
+  const fi=Math.max(0,Math.min(449,Math.round((t-T0)*30)));
+  window.__frame='build/frames/f_'+String(fi).padStart(4,'0')+'.jpg';
+  const todV=cl(seg(t,6.1,6.5))*(1-seg(t,21.1,21.4));
+  $('tod').style.opacity=todV;
+  set('todDay', 1-sun, `translateY(${sun*-40}px)`);
+  set('todSun', sun, `translateY(${(1-sun)*40}px)`);
+  [['k0',.3,1.5,90,-1],['k1',2.6,3.5,330,1],['k2',4.6,5.8,90,-1],['k3',6.9,8.1,480,1],['k4',9.2,10.1,90,-1],['k5',11.2,12.1,380,1],['k6',13.2,14.8,90,-1]].forEach(([id,s,e,x,dir])=>{
+    s+=T0; e+=T0;
+    const k=back(seg(t,s,s+.4)); const el=$(id);
+    el.style.left=x+'px';
+    el.style.opacity=cl(seg(t,s,s+.12))*(1-seg(t,e,e+.2));
+    el.style.transform=`translateX(${(1-k)*dir*300}px) rotate(${dir*-2}deg)`;
+  });
+
+  // TWIST (21.5 - 25)
+  const twOut=seg(t,24.6,24.9);
+  set('tw1', eo(seg(t,21.7,22.1))*(1-twOut), `scale(${1.25-.25*eo(seg(t,21.7,22.1))})`);
+  set('tw2', eo(seg(t,23.0,23.3))*(1-twOut), `scale(${1.4-.4*eo(seg(t,23.0,23.3))})`);
+
+  // CTA (25 - 30)
+  $('cta').style.opacity=t>24.9?1:0;
+  set('cLogo', eo(seg(t,25.0,25.5)), `scale(${.85+.15*back(seg(t,25.0,25.5))})`);
+  set('cQ', eo(seg(t,25.5,25.9)), `translateY(${(1-eo(seg(t,25.5,25.9)))*30}px)`);
+  const pulse=t>26.6?1+.035*Math.sin((t-26.6)*7):1;
+  set('cB', eo(seg(t,26.0,26.4)), `scale(${back(seg(t,26.0,26.45))*pulse})`);
+  set('cS', eo(seg(t,26.4,26.8)));
+};
+render(0);
+</script>
+</body></html>
