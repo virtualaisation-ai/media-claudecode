@@ -33,6 +33,10 @@ projects/
     reel_pov_es.html     reel POV: ricerca → risultato → giornata dal pranzo al tramonto → CTA
     reel_sfx.json, scroll.json, post_caption_ES.md, build.sh
     output/              reel + copertina
+  fuerte-digitales-brand/
+    reel_brand_es.html   reel di marca: hook → servizi → caso web (Twinny & Single Fin) → bot di prenotazione WhatsApp → CTA
+    reel_sfx.json, post_caption_ES.md, build.sh (riusa lo scroll di twinny-singlefin)
+    output/              reel + copertina
 ```
 
 ## Requisiti
