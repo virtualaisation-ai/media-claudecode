@@ -5,7 +5,7 @@
 @font-face{font-family:Inter;font-weight:400;src:url(../../shared/fonts/inter-latin-400-normal.woff2)}
 @font-face{font-family:Inter;font-weight:700;src:url(../../shared/fonts/inter-latin-700-normal.woff2)}
 @font-face{font-family:Inter;font-weight:800;src:url(../../shared/fonts/inter-latin-800-normal.woff2)}
-:root{--bg:#0a0e11;--teal:#2ba3c6;--sand:#f4e2b8;--txt:#f4f1ea;--mute:#93a1ab}
+:root{--bg:#0a0e11;--teal:#2ba3c6;--sand:#f4e2b8;--txt:#f4f1ea;--mute:#93a1ab;--fire:#ff7a3d}
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg);font-family:Inter,"Noto Color Emoji",sans-serif;color:var(--txt)}
 #stage{position:absolute;inset:0;overflow:hidden}
@@ -14,11 +14,15 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg);font-f
 .ctr{left:0;width:1080px;text-align:center}
 .big{font-family:Anton,"Noto Color Emoji";line-height:.95;letter-spacing:1px}
 .pill{display:inline-block;font-weight:800;font-size:30px;letter-spacing:4px;padding:12px 26px;border-radius:999px;background:var(--teal);color:#fff}
-.svc{left:90px;width:900px;height:180px;border-radius:30px;background:rgba(255,255,255,.06);border:2px solid rgba(43,163,198,.45);
-  display:flex;align-items:center;gap:34px;padding:0 40px}
-.svc .ico{font-size:84px;width:110px;text-align:center}
-.svc .t{font-weight:800;font-size:52px}
-.svc .s{font-size:32px;color:var(--mute);margin-top:6px}
+.ch{display:inline-block;font-weight:800;font-size:36px;padding:14px 26px;border-radius:999px;border:3px solid var(--teal);color:#fff;margin:0 6px}
+.svc{width:440px;height:250px;border-radius:30px;background:rgba(255,255,255,.06);border:2px solid rgba(43,163,198,.45);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center}
+.svc .ico{font-size:80px}
+.svc .t{font-weight:800;font-size:38px;line-height:1.1}
+.who{left:110px;width:860px;height:120px;border-radius:24px;background:rgba(255,255,255,.06);border-left:8px solid var(--teal);
+  display:flex;align-items:center;justify-content:space-between;padding:0 34px}
+.who .n{font-weight:800;font-size:42px}
+.who .k{font-weight:800;font-size:24px;letter-spacing:3px;color:var(--teal)}
 .phone{width:576px;padding:18px;border-radius:64px;background:#1f2326;box-shadow:0 0 0 3px #394047,0 40px 120px rgba(0,0,0,.6)}
 .screen{width:540px;height:1065px;border-radius:46px;overflow:hidden;position:relative;background:#000}
 .screen img{width:540px;display:block}
@@ -41,40 +45,28 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg);font-f
 .btns span{font-size:23px;font-weight:700;padding:10px 18px;border-radius:999px;border:2px solid #3a8fa5;color:#9fdcec}
 .inp{height:88px;margin:0 18px 22px;border-radius:44px;background:#1a272e;display:flex;align-items:center;padding:0 30px;font-size:24px;color:#6f8691}
 .btn{font-size:42px;font-weight:800;padding:26px 0;border-radius:999px;background:var(--sand);color:var(--bg);text-align:center}
+.offer{left:90px;width:900px;border-radius:26px;padding:22px 30px;background:rgba(255,122,61,.12);border:3px solid var(--fire);text-align:center}
 </style></head>
 <body><div id="stage">
   <div class="abs full" style="background:radial-gradient(ellipse at 50% 38%,#0f3a48 0%,#0a0e11 68%)"></div>
 
-  <!-- HOOK -->
+  <!-- 1. HOOK: il messaggio del sito -->
   <img id="hLogo" class="abs" src="../../shared/brand/logo_fd.png" style="left:400px;top:250px;width:280px">
-  <div id="h1" class="abs big ctr" style="top:640px;font-size:150px">TU NEGOCIO,</div>
-  <div id="h2" class="abs big ctr" style="top:790px;font-size:150px">EN PILOTO</div>
-  <div id="h3" class="abs big ctr" style="top:940px;font-size:150px;color:var(--teal)">AUTOMÁTICO.</div>
+  <div id="h1" class="abs big ctr" style="top:620px;font-size:140px">DEJA DE PERDER</div>
+  <div id="h2" class="abs big ctr" style="top:760px;font-size:140px">RESERVAS</div>
+  <div id="h3" class="abs big ctr" style="top:905px;font-size:118px;color:var(--teal);white-space:nowrap">MIENTRAS TRABAJAS.</div>
 
-  <!-- CHI SIAMO + SERVIZI -->
-  <div id="w1" class="abs ctr" style="top:300px;font-size:44px;font-weight:800;color:var(--sand)">Somos</div>
-  <div id="w2" class="abs big ctr" style="top:370px;font-size:128px">FUERTE DIGITALES</div>
-  <div id="v0" class="abs svc" style="top:640px"><div class="ico">🌐</div><div><div class="t">Webs que venden</div><div class="s">Diseño a medida para tu negocio</div></div></div>
-  <div id="v1" class="abs svc" style="top:850px"><div class="ico">🤖</div><div><div class="t">Automatizaciones con IA</div><div class="s">Menos tareas repetitivas, más tiempo</div></div></div>
-  <div id="v2" class="abs svc" style="top:1060px"><div class="ico">📲</div><div><div class="t">Reservas por WhatsApp</div><div class="s">Un bot que atiende 24/7 en 5 idiomas</div></div></div>
+  <!-- 2. LA PROMESSA -->
+  <div id="p1" class="abs ctr" style="top:560px;font-size:72px;font-weight:800;line-height:1.12">El teléfono<br>lo contesta <span style="color:var(--teal)">la IA.</span></div>
+  <div id="p2" class="abs ctr" style="top:790px;font-size:42px;font-weight:700;color:var(--sand);line-height:1.3;padding:0 120px">Tú cocinas, cortas el pelo<br>o atiendes tranquilo.</div>
+  <div id="p3" class="abs ctr" style="top:1000px"><span class="ch">📞 Llamada</span><span class="ch">💬 WhatsApp</span><span class="ch">🌐 Web</span></div>
+  <div id="p4" class="abs big ctr" style="top:1110px;font-size:110px;color:var(--teal)">24/7</div>
 
-  <!-- CASO WEB -->
-  <div id="cw" class="abs ctr" style="top:240px">
-    <div class="pill">CASO REAL · WEB</div>
-    <div class="big" style="font-size:96px;margin-top:20px">TWINNY &amp; SINGLE FIN</div>
-    <div style="font-size:34px;font-weight:700;color:var(--sand);margin-top:10px">Corralejo · Burgers de día, cócteles al atardecer</div>
-  </div>
-  <div id="pw" class="abs phone" style="left:252px;top:520px;transform-origin:50% 0"><div class="screen"><img id="aimg" src="build/frames/f_0000.jpg"></div></div>
-  <div id="k0" class="abs chip" style="top:1250px"><span class="x">✓</span>Diseño a medida</div>
-  <div id="k1" class="abs chip" style="top:1250px"><span class="x">✓</span>Carta digital completa</div>
-  <div id="k2" class="abs chip" style="top:1250px"><span class="x">✓</span>Reseñas a la vista</div>
-  <div id="k3" class="abs chip" style="top:1250px"><span class="x">✓</span>Reserva directa por WhatsApp</div>
-
-  <!-- CASO AUTOMAZIONE -->
+  <!-- 3. RECEPCIONISTA IA (demo chat) -->
   <div id="ca" class="abs ctr" style="top:240px">
-    <div class="pill">AUTOMATIZACIÓN</div>
-    <div class="big" style="font-size:96px;margin-top:20px">BOT DE RESERVAS</div>
-    <div style="font-size:34px;font-weight:700;color:var(--sand);margin-top:10px">En WhatsApp · Mientras tú duermes 🌙</div>
+    <div class="pill">PRODUCTO ESTRELLA</div>
+    <div class="big" style="font-size:96px;margin-top:20px">RECEPCIONISTA IA</div>
+    <div style="font-size:34px;font-weight:700;color:var(--sand);margin-top:10px">Tú trabajas, la IA reserva 🌙</div>
   </div>
   <div id="pc" class="abs phone" style="left:252px;top:520px;transform-origin:50% 0"><div class="screen">
     <div class="chat">
@@ -100,74 +92,119 @@ Código: FD-4821
       <div class="inp">Mensaje</div>
     </div>
   </div></div>
-  <div id="b0" class="abs chip" style="top:1430px">🌍 5 idiomas</div>
-  <div id="b1" class="abs chip" style="top:1430px">🚫 Sin overbooking</div>
-  <div id="b2" class="abs chip" style="top:1430px">📊 Todo guardado en tu panel</div>
+  <div id="b0" class="abs chip" style="top:1430px"><span class="x">✓</span>Comprueba disponibilidad</div>
+  <div id="b1" class="abs chip" style="top:1430px"><span class="x">✓</span>Recordatorios automáticos</div>
+  <div id="b2" class="abs chip" style="top:1430px"><span class="x">✓</span>La reserva, en tu móvil</div>
 
-  <!-- CTA -->
+  <!-- 4. SERVIZI -->
+  <div id="sv" class="abs ctr" style="top:280px">
+    <div style="font-size:40px;font-weight:800;color:var(--sand)">Todo lo digital de tu negocio,</div>
+    <div class="big" style="font-size:110px;margin-top:10px">EN UN SITIO DE AQUÍ</div>
+  </div>
+  <div id="g0" class="abs svc" style="left:90px;top:560px"><div class="ico">📲</div><div class="t">Recepcionista IA</div></div>
+  <div id="g1" class="abs svc" style="left:550px;top:560px"><div class="ico">🍽️</div><div class="t">Menú QR<br>y pedidos</div></div>
+  <div id="g2" class="abs svc" style="left:90px;top:830px"><div class="ico">🌐</div><div class="t">Webs y<br>tiendas online</div></div>
+  <div id="g3" class="abs svc" style="left:550px;top:830px"><div class="ico">⚙️</div><div class="t">Automatización<br>y agentes IA</div></div>
+  <div id="g4" class="abs svc" style="left:90px;top:1100px"><div class="ico">📣</div><div class="t">Redes<br>Sociales IA</div></div>
+  <div id="g5" class="abs svc" style="left:550px;top:1100px"><div class="ico">⭐</div><div class="t">Reseñas<br>Google</div></div>
+
+  <!-- 5. CASO REALE WEB -->
+  <div id="cw" class="abs ctr" style="top:240px">
+    <div class="pill">TRABAJOS · WEB + RESERVAS</div>
+    <div class="big" style="font-size:96px;margin-top:20px">TWINNY · SINGLE FIN</div>
+    <div style="font-size:34px;font-weight:700;color:var(--sand);margin-top:10px">Dos locales, una web y reserva de mesa</div>
+  </div>
+  <div id="pw" class="abs phone" style="left:252px;top:520px;transform-origin:50% 0"><div class="screen"><img id="aimg" src="build/frames/f_0000.jpg"></div></div>
+  <div id="k0" class="abs chip" style="top:1250px"><span class="x">✓</span>Diseño a medida</div>
+  <div id="k1" class="abs chip" style="top:1250px"><span class="x">✓</span>Carta digital completa</div>
+  <div id="k2" class="abs chip" style="top:1250px"><span class="x">✓</span>Reseñas a la vista</div>
+  <div id="k3" class="abs chip" style="top:1250px"><span class="x">✓</span>Reserva de mesa directa</div>
+
+  <!-- 6. CHI CI HA GIÀ SCELTO -->
+  <div id="wt" class="abs ctr" style="top:330px">
+    <div style="font-size:40px;font-weight:800;color:var(--sand)">Negocios de la isla que</div>
+    <div class="big" style="font-size:110px;margin-top:10px">YA CONFÍAN EN NOSOTROS</div>
+  </div>
+  <div id="c0" class="abs who" style="top:620px"><div class="n">Twinny · Single Fin</div><div class="k">WEB + RESERVAS</div></div>
+  <div id="c1" class="abs who" style="top:770px"><div class="n">Dream Barber Shop</div><div class="k">WEB + RESEÑAS</div></div>
+  <div id="c2" class="abs who" style="top:920px"><div class="n">La Pulpería</div><div class="k">MENÚ QR</div></div>
+  <div id="c3" class="abs who" style="top:1070px"><div class="n">BIOS Fuerteventura</div><div class="k">WEB</div></div>
+  <div id="c4" class="abs ctr big" style="top:1240px;font-size:70px;color:var(--teal)">¿EL PRÓXIMO? TÚ 🫵</div>
+
+  <!-- 7. CTA -->
   <div id="cta" class="abs full">
-    <img id="cLogo" class="abs" src="../../shared/brand/logo_fd.png" style="left:240px;top:380px;width:600px">
-    <div id="cQ" class="abs ctr" style="top:810px;font-size:58px;font-weight:800;line-height:1.18">Webs + automatizaciones<br><span style="color:var(--teal)">con IA</span> para tu negocio.</div>
-    <div id="cB" class="abs btn" style="left:220px;width:640px;top:1060px">Escríbenos por DM →</div>
-    <div id="cS" class="abs ctr" style="top:1200px;font-size:32px;font-weight:700;color:var(--sand);letter-spacing:4px">WEB · IA · AUTOMATIZACIONES · FUERTEVENTURA</div>
+    <img id="cLogo" class="abs" src="../../shared/brand/logo_fd.png" style="left:290px;top:300px;width:500px">
+    <div id="cQ" class="abs ctr" style="top:640px;font-size:60px;font-weight:800;line-height:1.15">Somos de aquí.<br><span style="color:var(--teal)">Conocemos tu negocio.</span></div>
+    <div id="cO" class="abs offer" style="top:850px">
+      <div style="font-weight:800;font-size:30px;letter-spacing:3px;color:var(--fire);white-space:nowrap">🔥 PRECIO FUNDADOR · PLAZAS LIMITADAS</div>
+      <div style="font-weight:800;font-size:42px;margin-top:10px;white-space:nowrap">Recepcionista IA a <span style="color:var(--fire)">49 €/mes</span> <span style="font-size:32px;color:var(--mute);text-decoration:line-through">79 €</span></div>
+    </div>
+    <div id="cB" class="abs btn" style="left:200px;width:680px;top:1070px">Escríbenos por WhatsApp →</div>
+    <div id="cS" class="abs ctr" style="top:1210px;font-size:36px;font-weight:700;color:var(--sand);letter-spacing:2px">fuertedigitales.es · @fuertedigitales</div>
   </div>
 </div>
 <script>
 const $=id=>document.getElementById(id);
 const cl=x=>Math.max(0,Math.min(1,x));
 const eo=x=>1-Math.pow(1-cl(x),3);
-const eio=x=>{x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
 const back=x=>{x=cl(x);const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
 const seg=(t,a,b)=>cl((t-a)/(b-a));
 function set(id,o,tf){const e=$(id);e.style.opacity=o;e.style.transform=tf||'none'}
 function chip(id,s,e,x,dir,t){const k=back(seg(t,s,s+.4)),el=$(id);el.style.left=x+'px';
   el.style.opacity=cl(seg(t,s,s+.12))*(1-seg(t,e,e+.2));el.style.transform=`translateX(${(1-k)*dir*300}px) rotate(${dir*-2}deg)`}
-const W0=8.0, SPEED=1.5;                  // scroll del sito: inizio e velocità
-const MSG=[18.6,19.2,20.2,20.8,21.7,22.3,23.2,23.8,24.6,25.3];   // istanti dei messaggi della chat
+// finestra di una scena: entra in [a, a+f], esce in [b-f, b]
+const win=(t,a,b,f=.3)=>cl(seg(t,a,a+f))*(1-seg(t,b-f,b));
+const MSG=[7.4,8.0,9.0,9.6,10.5,11.1,12.0,12.6,13.4,14.1];   // messaggi della chat
+const W0=20.4, SPEED=1.6;                                     // scroll del sito
 
 window.render=function(t){
-  // HOOK (0 - 3.3)
-  const hOut=seg(t,3.0,3.3);
+  // 1. HOOK (0 - 3.4)
+  const hOut=seg(t,3.1,3.4);
   set('hLogo', eo(seg(t,0,.4))*(1-hOut), `scale(${.8+.2*eo(seg(t,0,.4))})`);
   [['h1',.2],['h2',.6],['h3',1.0]].forEach(([id,s])=>set(id, cl(seg(t,s,s+.08))*(1-hOut), `translateY(${-hOut*60}px) scale(${1.45-.45*eo(seg(t,s,s+.22))})`));
 
-  // CHI SIAMO (3.3 - 7.4)
-  const wOut=seg(t,7.1,7.4);
-  set('w1', eo(seg(t,3.3,3.6))*(1-wOut));
-  set('w2', eo(seg(t,3.4,3.75))*(1-wOut), `scale(${1.2-.2*eo(seg(t,3.4,3.75))})`);
-  [['v0',3.8],['v1',4.25],['v2',4.7]].forEach(([id,s],i)=>set(id, cl(seg(t,s,s+.15))*(1-wOut), `translateX(${(1-back(seg(t,s,s+.45)))*(i%2?1:-1)*500}px)`));
+  // 2. PROMESSA (3.4 - 6.8)
+  set('p1', win(t,3.4,6.8)*1, `scale(${1.15-.15*eo(seg(t,3.4,3.75))})`);
+  set('p2', win(t,3.9,6.8), `translateY(${(1-eo(seg(t,3.9,4.3)))*25}px)`);
+  set('p3', win(t,4.5,6.8), `translateY(${(1-back(seg(t,4.5,4.9)))*40}px)`);
+  set('p4', win(t,5.1,6.8), `scale(${1.5-.5*eo(seg(t,5.1,5.35))})`);
 
-  // CASO WEB (7.4 - 18.0)
-  const cwIn=eo(seg(t,7.4,7.9)), cwOut=seg(t,17.6,17.95);
-  set('cw', t>7.3&&t<18?cwIn*(1-cwOut):0, `translateY(${(1-cwIn)*-40}px)`);
-  const pIn=eo(seg(t,7.5,8.1));
-  set('pw', t>7.4&&t<18?1-cwOut:0, `translateY(${(1-pIn)*1400}px) scale(.88)`);
-  const rec=Math.max(0,(t-W0)*SPEED), fi=Math.min(449,Math.round(rec*30));
+  // 3. RECEPCIONISTA (6.8 - 15.6)
+  const caIn=eo(seg(t,6.8,7.2)), caOut=seg(t,15.2,15.55);
+  set('ca', t>6.7&&t<15.6?caIn*(1-caOut):0, `translateY(${(1-caIn)*-40}px)`);
+  const pcIn=eo(seg(t,6.8,7.3));
+  set('pc', t>6.7&&t<15.6?1-caOut:0, `translateY(${(1-pcIn)*1400}px) scale(.88)`);
+  MSG.forEach((s,i)=>{const w=$('m'+i); w.style.height='auto'; const h=w.scrollHeight; const k=eo(seg(t,s,s+.25));
+    w.style.height=(h*k)+'px'; w.style.opacity=k;});
+  $('st').textContent=MSG.some((s,i)=>i%2===1&&t>s-.45&&t<s)?'escribiendo…':'en línea';
+  chip('b0',11.4,12.4,90,-1,t); chip('b1',12.9,13.8,330,1,t); chip('b2',14.4,15.3,90,-1,t);
+
+  // 4. SERVIZI (15.6 - 20.3)
+  set('sv', win(t,15.6,20.3), `translateY(${(1-eo(seg(t,15.6,16)))*-30}px)`);
+  for(let i=0;i<6;i++){const s=16.0+i*.28; set('g'+i, win(t,s,20.3,.25), `scale(${.6+.4*back(seg(t,s,s+.4))})`);}
+
+  // 5. CASO WEB (20.3 - 29.0)
+  const cwIn=eo(seg(t,20.3,20.7)), cwOut=seg(t,28.65,29.0);
+  set('cw', t>20.2&&t<29?cwIn*(1-cwOut):0, `translateY(${(1-cwIn)*-40}px)`);
+  const pIn=eo(seg(t,20.3,20.9));
+  set('pw', t>20.2&&t<29?1-cwOut:0, `translateY(${(1-pIn)*1400}px) scale(.88)`);
+  const fi=Math.min(449,Math.round(Math.max(0,(t-W0)*SPEED)*30));
   window.__frame='build/frames/f_'+String(fi).padStart(4,'0')+'.jpg';
-  chip('k0',8.2,9.2,90,-1,t); chip('k1',11.1,11.95,380,1,t); chip('k2',15.5,16.25,90,-1,t); chip('k3',16.8,17.5,170,1,t);
+  chip('k0',20.9,21.9,90,-1,t); chip('k1',23.3,24.1,380,1,t); chip('k2',27.4,28.1,90,-1,t); chip('k3',28.2,28.8,280,1,t);
 
-  // CASO BOT (18.0 - 27.0)
-  const caIn=eo(seg(t,18.0,18.4)), caOut=seg(t,26.6,26.95);
-  set('ca', t>17.9&&t<27?caIn*(1-caOut):0, `translateY(${(1-caIn)*-40}px)`);
-  const pcIn=eo(seg(t,18.0,18.5));
-  set('pc', t>17.9&&t<27?1-caOut:0, `translateY(${(1-pcIn)*1400}px) scale(.88)`);
-  MSG.forEach((s,i)=>{
-    const w=$('m'+i); w.style.height='auto'; const h=w.scrollHeight;
-    const k=eo(seg(t,s,s+.25));
-    w.style.height=(h*k)+'px'; w.style.opacity=k;
-  });
-  // "escribiendo…" nei 0,4 s prima di ogni risposta del bot
-  const typing=MSG.some((s,i)=>i%2===1&&t>s-.45&&t<s);
-  $('st').textContent=typing?'escribiendo…':'en línea';
-  chip('b0',19.6,20.6,90,-1,t); chip('b1',22.6,23.6,520,1,t); chip('b2',25.6,26.5,90,-1,t);
+  // 6. CLIENTI (29.0 - 32.6)
+  set('wt', win(t,29.0,32.6), `translateY(${(1-eo(seg(t,29,29.4)))*-30}px)`);
+  for(let i=0;i<4;i++){const s=29.4+i*.3; set('c'+i, win(t,s,32.6,.25), `translateX(${(1-back(seg(t,s,s+.4)))*(i%2?1:-1)*600}px)`);}
+  set('c4', win(t,30.9,32.6,.25), `scale(${1.4-.4*eo(seg(t,30.9,31.15))})`);
 
-  // CTA (27.0 - 33)
-  $('cta').style.opacity=t>26.95?1:0;
-  set('cLogo', eo(seg(t,27.0,27.5)), `scale(${.85+.15*back(seg(t,27.0,27.5))})`);
-  set('cQ', eo(seg(t,27.5,27.9)), `translateY(${(1-eo(seg(t,27.5,27.9)))*30}px)`);
-  const pulse=t>28.6?1+.035*Math.sin((t-28.6)*7):1;
-  set('cB', eo(seg(t,28.0,28.4)), `scale(${back(seg(t,28.0,28.45))*pulse})`);
-  set('cS', eo(seg(t,28.4,28.8)));
+  // 7. CTA (32.6 - 38)
+  $('cta').style.opacity=t>32.55?1:0;
+  set('cLogo', eo(seg(t,32.6,33.1)), `scale(${.85+.15*back(seg(t,32.6,33.1))})`);
+  set('cQ', eo(seg(t,33.1,33.5)), `translateY(${(1-eo(seg(t,33.1,33.5)))*30}px)`);
+  set('cO', eo(seg(t,33.7,34.1)), `scale(${.8+.2*back(seg(t,33.7,34.15))})`);
+  const pulse=t>35.0?1+.035*Math.sin((t-35.0)*7):1;
+  set('cB', eo(seg(t,34.3,34.7)), `scale(${back(seg(t,34.3,34.75))*pulse})`);
+  set('cS', eo(seg(t,34.7,35.1)));
 };
 render(0);
 </script>
