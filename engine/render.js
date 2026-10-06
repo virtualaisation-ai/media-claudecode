@@ -8,11 +8,16 @@ const stillIdx = args.indexOf('--still');
 const still = stillIdx >= 0 ? +args.splice(stillIdx, 2)[1] : null;
 const [page, out, dur = '0', fps = '30'] = args;
 
-// Le pagine con lo scroll del sito impostano window.__frame; carichiamo il fotogramma e aspettiamo che sia decodificato.
+// Le pagine con lo scroll del sito impostano window.__frame (un solo <img id="aimg">)
+// oppure window.__frames = { idImmagine: percorso } per più sequenze; aspettiamo che ogni fotogramma sia decodificato.
 const step = async (p, t) => p.evaluate(async t => {
   render(t);
-  const im = document.getElementById('aimg');
-  if (im && window.__frame && !im.src.endsWith(window.__frame)) { im.src = window.__frame; await im.decode(); }
+  const frames = Object.assign({}, window.__frames || {});
+  if (window.__frame) frames.aimg = window.__frame;
+  for (const [id, src] of Object.entries(frames)) {
+    const im = document.getElementById(id);
+    if (im && src && !im.src.endsWith(src)) { im.src = src; await im.decode(); }
+  }
 }, t);
 
 (async () => {

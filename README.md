@@ -11,7 +11,7 @@ Ogni video è una pagina HTML animata (`window.render(t)`) renderizzata fotogram
 ```
 engine/
   record.js   registra lo scroll del sito in formato telefono (390×769 @2x) con animazioni CSS a tempo controllato
-  render.js   renderizza una pagina HTML animata in MP4 (o un fotogramma singolo con --still)
+  render.js   renderizza una pagina HTML animata in MP4 (o un fotogramma singolo con --still); supporta più sequenze con window.__frames
   sfx.py      genera gli effetti sonori (thump, whoosh, pop, tick) e li mixa sugli istanti indicati
 shared/
   fonts/      Anton + Inter (woff2)
@@ -33,6 +33,11 @@ projects/
     reel_pov_es.html     reel POV: ricerca → risultato → giornata dal pranzo al tramonto → CTA
     reel_sfx.json, scroll.json, post_caption_ES.md, build.sh
     output/              reel + copertina
+  fuerte-digitales-portfolio/
+    reel_portfolio_es.html  reel "6 negocios, 6 problemas resueltos": Zé Prada, La Pulpería, Samsara,
+                            Twinny · Single Fin, motore recensioni, Dream Barber Shop
+    assets/                 screenshot Google di Zé Prada, demo Agenda Pro di Samsara, QR
+    record_samsara.js, reel_sfx.json, post_caption_ES.md, build.sh
   fuerte-digitales-brand/
     reel_brand_es.html   reel di marca: hook → servizi → caso web (Twinny & Single Fin) → bot di prenotazione WhatsApp → CTA
     reel_sfx.json, post_caption_ES.md, build.sh (riusa lo scroll di twinny-singlefin)

@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Anton;src:url(../../shared/fonts/anton-latin-400-normal.woff2)}
+@font-face{font-family:Inter;font-weight:400;src:url(../../shared/fonts/inter-latin-400-normal.woff2)}
+@font-face{font-family:Inter;font-weight:700;src:url(../../shared/fonts/inter-latin-700-normal.woff2)}
+@font-face{font-family:Inter;font-weight:800;src:url(../../shared/fonts/inter-latin-800-normal.woff2)}
+:root{--bg:#0a0e11;--teal:#2ba3c6;--sand:#f4e2b8;--txt:#f4f1ea;--mute:#93a1ab;--red:#ff6b5e}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg);font-family:Inter,"Noto Color Emoji",sans-serif;color:var(--txt)}
+#stage{position:absolute;inset:0;overflow:hidden}
+.abs{position:absolute;will-change:transform,opacity}
+.full{left:0;top:0;width:1080px;height:1920px}
+.ctr{left:0;width:1080px;text-align:center}
+.big{font-family:Anton,"Noto Color Emoji";line-height:.95;letter-spacing:1px}
+/* intestazione e chiusura di ogni caso */
+.num{font-family:Anton;font-size:56px;color:var(--teal);letter-spacing:4px}
+.who{font-family:Anton;font-size:92px;line-height:1;margin-top:8px}
+.cat{font-size:34px;font-weight:700;color:var(--sand);margin-top:10px}
+.rs{left:90px;width:900px}
+.rs .row{display:flex;gap:18px;align-items:flex-start;font-size:36px;font-weight:700;line-height:1.25;margin-top:14px}
+.rs .lab{flex:none;font-size:24px;font-weight:800;letter-spacing:3px;padding:8px 14px;border-radius:10px;margin-top:4px}
+.rs .r .lab{background:rgba(255,107,94,.15);color:var(--red)}
+.rs .s .lab{background:rgba(43,163,198,.18);color:var(--teal)}
+.phone{width:576px;padding:18px;border-radius:64px;background:#1f2326;box-shadow:0 0 0 3px #394047,0 40px 120px rgba(0,0,0,.6);transform-origin:0 0}
+.screen{width:540px;height:1065px;border-radius:46px;overflow:hidden;position:relative;background:#000}
+.screen img{width:540px;display:block}
+.feat{width:470px;border-radius:22px;background:rgba(255,255,255,.06);border:2px solid rgba(43,163,198,.4);padding:20px 24px;font-size:32px;font-weight:700;line-height:1.25}
+.feat.soon{border-style:dashed;border-color:rgba(244,226,184,.5);color:var(--sand)}
+/* chat */
+.chat{position:absolute;inset:0;background:#0f181d;display:flex;flex-direction:column}
+.hd{height:110px;display:flex;align-items:center;gap:18px;padding:30px 24px 0;background:#16242b}
+.av{width:62px;height:62px;border-radius:50%;background:var(--sand);display:flex;align-items:center;justify-content:center;font-size:34px}
+.hd .n{font-weight:800;font-size:28px}.hd .st{font-size:22px;color:#7fd3c0}
+.msgs{flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:0 22px 30px}
+.m{max-width:470px;padding:18px 22px;border-radius:22px;font-size:30px;line-height:1.32;background:#22323a;color:#eef3f5;border-top-left-radius:6px}
+.rb{margin-top:12px;max-width:470px;text-align:center;font-size:30px;font-weight:800;padding:18px;border-radius:18px;background:#1b6f86;color:#fff;position:relative;overflow:hidden}
+/* codice llms.txt */
+.code{width:470px;border-radius:22px;background:#0d1418;border:2px solid #24414d;padding:22px 24px;font-family:"DejaVu Sans Mono",monospace;font-size:22px;line-height:1.5;color:#b9d7e2;white-space:pre-wrap}
+.code .h{color:var(--sand)}.code .k{color:var(--teal)}
+/* targa NFC */
+.plate{width:520px;height:640px;border-radius:40px;background:linear-gradient(160deg,#1b1b1f,#0c0c0e);border:3px solid #c9a961;box-shadow:0 30px 90px rgba(0,0,0,.6);
+  display:flex;flex-direction:column;align-items:center;padding-top:44px;color:#f3e7c9}
+.btn{font-size:42px;font-weight:800;padding:26px 0;border-radius:999px;background:var(--sand);color:var(--bg);text-align:center}
+</style></head>
+<body><div id="stage">
+  <div class="abs full" style="background:radial-gradient(ellipse at 50% 38%,#0f3a48 0%,#0a0e11 68%)"></div>
+
+  <!-- HOOK -->
+  <img id="hLogo" class="abs" src="../../shared/brand/logo_fd.png" style="left:400px;top:260px;width:280px">
+  <div id="h1" class="abs big ctr" style="top:650px;font-size:150px">6 NEGOCIOS</div>
+  <div id="h2" class="abs big ctr" style="top:800px;font-size:150px">DE LA ISLA.</div>
+  <div id="h3" class="abs big ctr" style="top:985px;font-size:94px;color:var(--teal);white-space:nowrap">6 PROBLEMAS RESUELTOS.</div>
+
+  <!-- 01 ZÉ PRADA -->
+  <div id="c0" class="abs full">
+    <div class="abs ctr hdr" style="top:230px"><div class="num">01 / 06</div><div class="who">ZÉ PRADA</div><div class="cat">Masajista · Corralejo</div></div>
+    <div id="z_card" class="abs" style="left:90px;top:560px;width:900px;border-radius:28px;overflow:hidden;background:#fff;box-shadow:0 30px 80px rgba(0,0,0,.5)"><img src="assets/zeprada_google.png" style="width:900px;display:block"></div>
+    <div id="z_ring" class="abs" style="left:75px;top:623px;width:150px;height:150px;border-radius:50%;border:6px solid var(--teal)"></div>
+    <div id="z_ok" class="abs ctr" style="top:800px"><span class="big" style="font-size:96px;color:var(--teal)">✓ VERIFICADO</span></div>
+    <div id="z_q" class="abs ctr" style="top:960px;padding:0 120px;font-size:38px;font-weight:700;line-height:1.35;color:var(--sand)">«Llevaba muchos meses intentando arreglar mi página de Google sin éxito… y lo resolvimos en un momento.»<div style="font-size:28px;color:var(--mute);margin-top:12px">— Zé Prada</div></div>
+    <div class="abs rs" style="top:1270px"><div class="row r"><span class="lab">RETO</span><span>Meses peleando con la verificación de Google</span></div><div class="row s"><span class="lab">SOLUCIÓN</span><span>Perfil de empresa verificado, listo para Maps</span></div></div>
+  </div>
+
+  <!-- 02 LA PULPERÍA -->
+  <div id="c1" class="abs full">
+    <div class="abs ctr hdr" style="top:230px"><div class="num">02 / 06</div><div class="who">LA PULPERÍA</div><div class="cat">Tapas bar · Corralejo</div></div>
+    <div class="abs phone" style="left:90px;top:520px;transform:scale(.7)"><div class="screen">
+      <img id="pulImg" src="build/pul/f_0000.jpg">
+      <img id="pulOld" src="../la-pulperia/assets/old.jpg" style="position:absolute;left:0;top:0">
+    </div></div>
+    <div id="p_tag" class="abs" style="left:90px;top:1300px;width:403px;text-align:center;font-family:Anton;font-size:44px;letter-spacing:3px"></div>
+    <div id="p_code" class="abs code" style="left:540px;top:560px"><span class="k">🤖 Lo que leen las IA</span>
+<span class="h"># La Pulpería</span>
+&gt; Tapas bar en Corralejo,
+&gt; Fuerteventura. Especialidad
+&gt; en pulpo a la gallega.
+
+<span class="k">## Datos clave</span>
+- Horario: 9:00 a 1:00
+- Reservas: orden de llegada
+- Valoración: 4,6/5 en Google</div>
+    <div id="p_f0" class="abs feat" style="left:540px;top:1040px">✓ Schema.org: restaurante, carta y FAQ</div>
+    <div id="p_f1" class="abs feat" style="left:540px;top:1165px">✓ llms.txt para ChatGPT y cía.</div>
+    <div class="abs rs" style="top:1370px"><div class="row r"><span class="lab">RETO</span><span>Una lista de enlaces sin nada que leer</span></div><div class="row s"><span class="lab">SOLUCIÓN</span><span>Web SEO + AEO: la entienden Google y las IA</span></div></div>
+  </div>
+
+  <!-- 03 SAMSARA -->
+  <div id="c2" class="abs full">
+    <div class="abs ctr hdr" style="top:230px"><div class="num">03 / 06</div><div class="who">SAMSARA</div><div class="cat">Estética avanzada · Corralejo</div></div>
+    <div class="abs phone" style="left:90px;top:520px;transform:scale(.7)"><div class="screen"><img id="samImg" src="build/sam/f_0000.jpg"></div></div>
+    <div class="abs" style="left:90px;top:1300px;width:403px;text-align:center;font-size:22px;color:var(--mute)">Panel en modo demo · datos de ejemplo</div>
+    <div id="s_f0" class="abs feat" style="left:540px;top:560px">💬 Asistente de WhatsApp 24/7</div>
+    <div id="s_f1" class="abs feat" style="left:540px;top:690px">⏰ Recordatorios 24 h y 2 h antes</div>
+    <div id="s_f2" class="abs feat" style="left:540px;top:820px">💳 Señal del 50 % contra los no-show</div>
+    <div id="s_f3" class="abs feat" style="left:540px;top:990px">📊 Agenda Pro con gráficos e informes</div>
+    <div class="abs rs" style="top:1370px"><div class="row r"><span class="lab">RETO</span><span>Horas con el móvil y citas perdidas por no-show</span></div><div class="row s"><span class="lab">SOLUCIÓN</span><span>Asistente WhatsApp + Agenda Pro</span></div></div>
+  </div>
+
+  <!-- 04 TWINNY · SINGLE FIN -->
+  <div id="c3" class="abs full">
+    <div class="abs ctr hdr" style="top:230px"><div class="num">04 / 06</div><div class="who">TWINNY · SINGLE FIN</div><div class="cat">Burgers y cócteles · Corralejo</div></div>
+    <div class="abs phone" style="left:90px;top:520px;transform:scale(.7)"><div class="screen"><img id="twImg" src="build/tw/f_0000.jpg"></div></div>
+    <div id="t_f0" class="abs feat" style="left:540px;top:600px">🎨 Web nueva, con color y dos almas</div>
+    <div id="t_f1" class="abs feat" style="left:540px;top:770px">📲 Reserva de mesa directa por WhatsApp</div>
+    <div id="t_f2" class="abs feat soon" style="left:540px;top:940px">🔜 Muy pronto: ADS para llenar las horas vacías</div>
+    <div class="abs rs" style="top:1370px"><div class="row r"><span class="lab">RETO</span><span>Llenar las mesas del mediodía al atardecer</span></div><div class="row s"><span class="lab">SOLUCIÓN</span><span>Web + reservas por WhatsApp (y ADS, muy pronto)</span></div></div>
+  </div>
+
+  <!-- 05 MOTOR DE RESEÑAS -->
+  <div id="c4" class="abs full">
+    <div class="abs ctr hdr" style="top:230px"><div class="num">05 / 06</div><div class="who">MOTOR DE RESEÑAS</div><div class="cat" id="r_after">Después de 🏜️ una excursión</div></div>
+    <div class="abs phone" style="left:252px;top:540px;transform:scale(.7);transform-origin:50% 0"><div class="screen"><div class="chat">
+      <div class="hd"><div class="av">🏝️</div><div><div class="n">Tu negocio</div><div class="st">en línea</div></div></div>
+      <div class="msgs">
+        <div id="r_msg" class="m">¡Gracias por venir, Laura! 🌿 ¿Cómo te has sentido? Si te ha gustado, nos ayudas muchísimo dejando tu opinión en Google.</div>
+        <div id="r_btn" class="rb">⭐ Dejar mi reseña en Google<div id="r_rip" style="position:absolute;left:50%;top:50%;width:80px;height:80px;margin:-40px;border-radius:50%;background:rgba(255,255,255,.45)"></div></div>
+      </div>
+    </div></div></div>
+    <div id="r_stars" class="abs ctr big" style="top:1318px;font-size:60px;color:#f5b301;letter-spacing:10px"></div>
+    <div class="abs rs" style="top:1395px"><div class="row r"><span class="lab">RETO</span><span>Clientes contentos que nunca dejan reseña</span></div><div class="row s"><span class="lab">SOLUCIÓN</span><span>Un WhatsApp automático con el enlace a Google</span></div></div>
+  </div>
+
+  <!-- 06 DREAM BARBER SHOP -->
+  <div id="c5" class="abs full">
+    <div class="abs ctr hdr" style="top:230px"><div class="num">06 / 06</div><div class="who">DREAM BARBER SHOP</div><div class="cat">Barbería · Corralejo</div></div>
+    <div id="d_plate" class="abs plate" style="left:90px;top:540px;transform:scale(.82);transform-origin:0 0">
+      <div style="font-size:34px;font-weight:700;letter-spacing:3px">¿TE HA GUSTADO?</div>
+      <div style="font-family:Anton;font-size:64px;margin-top:6px">DÉJANOS TU RESEÑA</div>
+      <div style="font-size:46px;color:#f5b301;letter-spacing:8px;margin-top:6px">★★★★★</div>
+      <div style="display:flex;align-items:center;gap:34px;margin-top:30px">
+        <div style="width:210px;height:210px;background:#fff;border-radius:16px;padding:14px"><img src="assets/qr_fd.svg" style="width:182px;height:182px;display:block"></div>
+        <div style="font-size:30px;font-weight:800;text-align:center;line-height:1.3"><div style="font-size:70px">📶</div>Acerca<br>tu móvil</div>
+      </div>
+    </div>
+    <div id="d_ph" class="abs" style="left:360px;top:760px;width:150px;height:290px;border-radius:30px;background:#1f2326;border:4px solid #394047;box-shadow:0 20px 50px rgba(0,0,0,.6)"><div style="margin:14px;height:254px;border-radius:18px;background:linear-gradient(160deg,#16242b,#22323a)"></div></div>
+    <div id="d_wave" class="abs" style="left:300px;top:840px;width:150px;height:150px;border-radius:50%;border:6px solid var(--teal)"></div>
+    <div id="d_f0" class="abs feat" style="left:540px;top:600px">✓ Web nueva</div>
+    <div id="d_f1" class="abs feat" style="left:540px;top:720px">✓ Placa NFC + QR en caja: reseña en un toque</div>
+    <div id="d_f2" class="abs feat soon" style="left:540px;top:900px">🔜 Muy pronto: QR adhesivo con la ubicación</div>
+    <div class="abs rs" style="top:1370px"><div class="row r"><span class="lab">RETO</span><span>Clientes que se iban sin dejar su opinión</span></div><div class="row s"><span class="lab">SOLUCIÓN</span><span>Reseñas en Google en segundos, desde la caja</span></div></div>
+  </div>
+
+  <!-- FINALE -->
+  <div id="fin" class="abs full">
+    <div id="f1" class="abs big ctr" style="top:330px;font-size:120px">Y EL PRÓXIMO…</div>
+    <div id="f2" class="abs big ctr" style="top:470px;font-size:170px;color:var(--teal)">TÚ 🫵</div>
+    <img id="fLogo" class="abs" src="../../shared/brand/logo_fd.png" style="left:340px;top:720px;width:400px">
+    <div id="fB" class="abs btn" style="left:200px;width:680px;top:1060px">Escríbenos por WhatsApp →</div>
+    <div id="fS" class="abs ctr" style="top:1200px;font-size:36px;font-weight:700;color:var(--sand);letter-spacing:2px">fuertedigitales.es · @fuertedigitales</div>
+  </div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=x=>Math.max(0,Math.min(1,x));
+const eo=x=>1-Math.pow(1-cl(x),3);
+const eio=x=>{x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
+const back=x=>{x=cl(x);const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const seg=(t,a,b)=>cl((t-a)/(b-a));
+function set(id,o,tf){const e=$(id);e.style.opacity=o;if(tf!==undefined)e.style.transform=tf}
+const pad=n=>String(n).padStart(4,'0');
+const D=6.6, S=k=>3.4+k*D;           // ogni caso dura 6,6 s
+const pop=(t,s)=>back(seg(t,s,s+.4));
+
+window.render=function(t){
+  // HOOK (0 - 3.4)
+  const hOut=seg(t,3.1,3.4);
+  set('hLogo', eo(seg(t,0,.4))*(1-hOut), `scale(${.8+.2*eo(seg(t,0,.4))})`);
+  [['h1',.2],['h2',.55],['h3',1.0]].forEach(([id,s])=>set(id, cl(seg(t,s,s+.08))*(1-hOut), `translateY(${-hOut*60}px) scale(${1.45-.45*eo(seg(t,s,s+.22))})`));
+
+  // contenitori dei casi: entrano da destra, escono a sinistra
+  for(let k=0;k<6;k++){
+    const s=S(k), e=s+D, inn=eio(seg(t,s,s+.45)), out=eio(seg(t,e-.35,e));
+    set('c'+k, t>=s&&t<e?1:0, `translateX(${(1-inn)*1080 - out*1080}px)`);
+  }
+  const f={};
+  // 01 Zé Prada
+  let s=S(0);
+  set('z_card', 1, `scale(${.9+.1*pop(t,s+.4)})`);
+  const rg=(t-s-1.0)%1.2/1.2; set('z_ring', t>s+1?(1-rg)*.9:0, `scale(${.6+.8*rg})`);
+  set('z_ok', cl(seg(t,s+1.3,s+1.45)), `scale(${1.6-.6*eo(seg(t,s+1.3,s+1.55))})`);
+  set('z_q', eo(seg(t,s+2.2,s+2.6)), `translateY(${(1-eo(seg(t,s+2.2,s+2.6)))*30}px)`);
+
+  // 02 La Pulpería: prima (vecchio sito), tendina, poi scroll del nuovo
+  s=S(1);
+  const wipe=eio(seg(t,s+1.6,s+2.1));
+  $('pulOld').style.clipPath=`inset(${wipe*100}% 0 0 0)`;
+  f.pulImg='build/pul/f_'+pad(Math.min(299,Math.round(Math.max(0,(t-s-2.0)*1.8)*30)))+'.jpg';
+  $('p_tag').textContent=wipe<.5?'ANTES':'DESPUÉS'; $('p_tag').style.color=wipe<.5?'var(--red)':'var(--teal)';
+  set('p_tag', cl(seg(t,s+.5,s+.7)));
+  set('p_code', eo(seg(t,s+2.4,s+2.8)), `translateX(${(1-eo(seg(t,s+2.4,s+2.8)))*500}px)`);
+  set('p_f0', cl(seg(t,s+3.4,s+3.5)), `scale(${pop(t,s+3.4)})`);
+  set('p_f1', cl(seg(t,s+4.0,s+4.1)), `scale(${pop(t,s+4.0)})`);
+
+  // 03 Samsara: agenda reale in demo
+  s=S(2);
+  f.samImg='build/sam/f_'+pad(Math.min(209,Math.round(Math.max(0,(t-s-.3))*30)))+'.jpg';
+  [0,1,2,3].forEach(i=>{const a=s+.8+i*.9; set('s_f'+i, cl(seg(t,a,a+.1)), `translateX(${(1-pop(t,a))*400}px)`)});
+
+  // 04 Twinny · Single Fin: scroll del sito a velocità 2x
+  s=S(3);
+  f.twImg='build/tw/f_'+pad(Math.min(449,Math.round(Math.max(0,(t-s-.3)*2)*30)))+'.jpg';
+  [0,1,2].forEach(i=>{const a=s+.8+i*1.1; set('t_f'+i, cl(seg(t,a,a+.1)), `translateX(${(1-pop(t,a))*400}px)`)});
+
+  // 05 Motore recensioni: la frase "Después de…" cambia, poi tocco sul bottone e stelle
+  s=S(4);
+  const opts=['🏜️ una excursión','🍽️ una cena','💆 un tratamiento'];
+  $('r_after').textContent='Después de '+opts[Math.min(2,Math.floor(Math.max(0,t-s-.3)/1.3))];
+  set('r_msg', eo(seg(t,s+.7,s+1.0)), `translateY(${(1-eo(seg(t,s+.7,s+1.0)))*30}px)`);
+  set('r_btn', eo(seg(t,s+1.1,s+1.4)));
+  const tap=seg(t,s+3.2,s+3.7); set('r_rip', t>s+3.2&&t<s+3.7?1-tap:0, `scale(${.2+4*tap})`);
+  const st=Math.max(0,Math.min(5,Math.floor((t-s-3.8)/.18)+1)); $('r_stars').textContent=t>s+3.8?'★'.repeat(st)+'☆'.repeat(5-st):'';
+
+  // 06 Dream Barber Shop: il telefono si avvicina alla targa
+  s=S(5);
+  set('d_plate', 1, `scale(${.82*(.92+.08*pop(t,s+.4))})`);
+  const app=eio(seg(t,s+1.0,s+1.8));
+  set('d_ph', cl(seg(t,s+.9,s+1.1)), `translate(${(1-app)*500}px,${(1-app)*300}px) rotate(${-12+12*app}deg)`);
+  const wv=(t-s-1.8)%.9/.9; set('d_wave', t>s+1.8&&t<s+3.6?(1-wv):0, `scale(${.5+1.2*wv})`);
+  [0,1,2].forEach(i=>{const a=s+1.2+i*1.0; set('d_f'+i, cl(seg(t,a,a+.1)), `translateX(${(1-pop(t,a))*400}px)`)});
+
+  // FINALE (43.0 - 48.5)
+  const F=S(6);
+  $('fin').style.opacity=t>=F?1:0;
+  set('f1', eo(seg(t,F,F+.35)), `translateY(${(1-eo(seg(t,F,F+.35)))*40}px)`);
+  set('f2', cl(seg(t,F+.6,F+.7)), `scale(${1.5-.5*eo(seg(t,F+.6,F+.85))})`);
+  set('fLogo', eo(seg(t,F+1.1,F+1.5)), `scale(${.85+.15*back(seg(t,F+1.1,F+1.55))})`);
+  const pulse=t>F+2.4?1+.035*Math.sin((t-F-2.4)*7):1;
+  set('fB', eo(seg(t,F+1.7,F+2.1)), `scale(${back(seg(t,F+1.7,F+2.15))*pulse})`);
+  set('fS', eo(seg(t,F+2.1,F+2.5)));
+  window.__frames=f;
+};
+render(0);
+</script>
+</body></html>
