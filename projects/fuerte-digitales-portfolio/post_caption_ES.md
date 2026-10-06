@@ -8,7 +8,7 @@
 03 · Samsara — asistente de WhatsApp + Agenda Pro: recordatorios, señal anti no-show e informes 📊
 04 · @twinny_fuerteventura & @singlefin_fuerteventura — web nueva y reservas por WhatsApp 🍔🍹
 05 · Motor de reseñas — un WhatsApp automático después de cada experiencia, con el enlace a Google ⭐
-06 · Dream Barber Shop — web nueva y placa NFC + QR en caja para reseñas en un toque 💈
+06 · Dream Barber Shop — web nueva (dreambarbershop.es) y placa NFC + QR en caja para reseñas en un toque 💈
 
 ¿Y el próximo? Tú 🫵
 Somos de aquí. Escríbenos por WhatsApp o entra en fuertedigitales.es

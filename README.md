@@ -36,7 +36,8 @@ projects/
   fuerte-digitales-portfolio/
     reel_portfolio_es.html  reel "6 negocios, 6 problemas resueltos": Zé Prada, La Pulpería, Samsara,
                             Twinny · Single Fin, motore recensioni, Dream Barber Shop
-    assets/                 screenshot Google di Zé Prada, demo Agenda Pro di Samsara, QR
+    assets/                 screenshot Google di Zé Prada, demo Agenda Pro di Samsara, scroll di dreambarbershop.es,
+                            foto della placca NFC + QR e QR con la posizione di Dream Barber
     record_samsara.js, reel_sfx.json, post_caption_ES.md, build.sh
   fuerte-digitales-brand/
     reel_brand_es.html   reel di marca: hook → servizi → caso web (Twinny & Single Fin) → bot di prenotazione WhatsApp → CTA
