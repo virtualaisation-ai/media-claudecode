@@ -1,0 +1,85 @@
+{
+ "insights": {
+  "y": 104,
+  "h": 342
+ },
+ "kpi": {
+  "y": 458,
+  "h": 143
+ },
+ "chart": {
+  "y": 1094,
+  "h": 307
+ },
+ "services": {
+  "y": 1413,
+  "h": 406
+ },
+ "heat": {
+  "y": 2083,
+  "h": 282
+ },
+ "money": {
+  "y": 2377,
+  "h": 294
+ },
+ "tips": [
+  "Incasso in crescita del 36% rispetto allo stesso punto del periodo precedente (487,50 € → 662,50 €).",
+  "Il venerdì è il giorno più vuoto (occupato al 36%). Manda una promo \"solo venerdì\" alle clienti su WhatsApp per riempirlo.",
+  "Gli acconti ti hanno fatto incassare 17,50 € da 1 disdetta tardiva o assenza: soldi che prima sarebbero andati persi.",
+  "Il 56% paga solo l'acconto. Uno sconto del 5% a chi paga tutto online ti fa incassare prima e riduce i no-show."
+ ],
+ "tipRects": [
+  {
+   "x": 33,
+   "y": 149,
+   "w": 324,
+   "h": 63
+  },
+  {
+   "x": 33,
+   "y": 222,
+   "w": 324,
+   "h": 63
+  },
+  {
+   "x": 33,
+   "y": 295,
+   "w": 324,
+   "h": 63
+  },
+  {
+   "x": 33,
+   "y": 368,
+   "w": 324,
+   "h": 63
+  }
+ ],
+ "plan": [
+  {
+   "key": "insights",
+   "hold": 1.4
+  },
+  {
+   "key": "kpi",
+   "hold": 6.4
+  },
+  {
+   "key": "chart",
+   "hold": 9.3
+  },
+  {
+   "key": "services",
+   "hold": 11.9
+  },
+  {
+   "key": "heat",
+   "hold": 14.7
+  },
+  {
+   "key": "money",
+   "hold": 18.3
+  }
+ ],
+ "duration": 20.9
+}

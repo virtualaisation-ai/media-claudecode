@@ -5,17 +5,17 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 E=../../engine
-rm -rf build && mkdir -p build/demo build/agenda output
+rm -rf build && mkdir -p build/demo build/pro output
 if [[ "${1:-}" == "--record" ]]; then
-  node record_demo.js build/demo && node record_agenda.js build/agenda
+  node record_demo.js build/demo && node record_pro.js build/pro   # record_pro.js aggiorna anche pro_meta.json
   ffmpeg -y -loglevel error -framerate 30 -i build/demo/f_%04d.jpg -c:v libx264 -crf 14 -preset slow -pix_fmt yuv444p assets/demo_chat_agenda.mp4
-  ffmpeg -y -loglevel error -framerate 30 -i build/agenda/f_%04d.jpg -c:v libx264 -crf 12 -preset slow -pix_fmt yuv444p assets/agenda_pro.mp4
+  ffmpeg -y -loglevel error -framerate 30 -i build/pro/f_%04d.jpg -c:v libx264 -crf 12 -preset slow -pix_fmt yuv444p assets/agenda_pro_report.mp4
 else
   ffmpeg -y -loglevel error -i assets/demo_chat_agenda.mp4 -q:v 2 -start_number 0 build/demo/f_%04d.jpg
-  ffmpeg -y -loglevel error -i assets/agenda_pro.mp4 -q:v 2 -start_number 0 build/agenda/f_%04d.jpg
+  ffmpeg -y -loglevel error -i assets/agenda_pro_report.mp4 -q:v 2 -start_number 0 build/pro/f_%04d.jpg
 fi
-node $E/render.js samsara_es.html build/reel.mp4 39.5
-node $E/render.js "samsara_es.html#story" build/story.mp4 17.5
+node $E/render.js samsara_es.html build/reel.mp4 54.5
+node $E/render.js "samsara_es.html#story" build/story.mp4 21.5
 python3 $E/sfx.py reel_sfx.json build/reel_sfx.wav
 python3 $E/sfx.py story_sfx.json build/story_sfx.wav
 ffmpeg -y -loglevel error -i build/reel.mp4 -i build/reel_sfx.wav -c:v copy -c:a aac -b:a 192k -shortest -movflags +faststart output/samsara_reel_ES.mp4

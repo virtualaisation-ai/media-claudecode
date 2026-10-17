@@ -14,7 +14,12 @@ Así trabaja el asistente que hemos creado para Samsara Estética Avanzada (Corr
 ⭐ Pide la reseña en Google después del tratamiento
 🔁 Y avisa a la clienta cuando toca la siguiente sesión
 
-Con Agenda Pro, Jenny recibe cada lunes los números de su semana.
+Y con Agenda Pro, Jenny ve su negocio en números:
+📊 Ingresos, citas, ticket medio y ocupación, comparados con la semana anterior
+💆‍♀️ Los tratamientos más pedidos y cuánto factura cada uno
+🔥 El mapa de franjas llenas y vacías
+💡 Consejos para vender más: qué día está más vacío y qué promo mandar para llenarlo
+📲 Y cada lunes a las 8:00, el informe le llega solo por WhatsApp
 
 ¿Quieres tu asistente? Escríbenos por WhatsApp 📲
 🔥 Precio Fundador: desde 49 €/mes

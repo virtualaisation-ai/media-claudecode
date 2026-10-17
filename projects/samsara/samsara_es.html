@@ -92,8 +92,21 @@ Recuerda: si no vienes, la señal no se devuelve. ¿Nos confirmas?</div><div cla
   </div></div>
 
   <!-- AGENDA PRO -->
-  <div id="prT" class="abs ctr" style="top:280px"><div class="serif" style="font-size:80px">Agenda <span style="font-style:italic;color:var(--sage)">Pro</span></div><div style="font-size:34px;font-weight:700;color:var(--sand);margin-top:12px">Informes y consejos automáticos cada lunes</div></div>
-  <div id="ph3" class="abs card" style="left:190px;width:700px;top:480px;height:1100px;transform-origin:50% 0"><img id="proImg" src="build/agenda/f_0000.jpg" style="width:700px;display:block"></div>
+  <div id="proHead" class="abs ctr" style="top:245px">
+    <div class="pill">AGENDA PRO · EL PANEL DE JENNY</div>
+    <div id="proTitle" class="step" style="margin-top:18px"></div>
+    <div id="proSub" style="font-size:34px;font-weight:700;color:var(--sand);margin-top:10px;padding:0 90px;line-height:1.3"></div>
+  </div>
+  <div id="proCard" class="abs card" style="left:130px;width:820px;top:540px;height:1000px;transform-origin:50% 0">
+    <img id="proImg" src="build/pro/f_0000.jpg" style="width:820px;display:block">
+    <div id="tip1" class="abs ring" style="left:63px;top:461px;width:693px;height:144px"></div>
+    <div id="tip3" class="abs ring" style="left:63px;top:768px;width:693px;height:144px"></div>
+  </div>
+  <div id="wa" class="abs full">
+    <div id="waI" class="abs ctr" style="top:560px;font-size:150px">📲</div>
+    <div id="waT" class="abs ctr serif" style="top:780px;font-size:96px">Cada lunes, <i style="color:var(--sage)">8:00</i></div>
+    <div id="waS" class="abs ctr" style="top:930px;font-size:40px;font-weight:700;color:var(--sand);line-height:1.35">el informe de la semana llega solo<br>por WhatsApp. Y el día 1, el del mes.</div>
+  </div>
 
   <!-- CTA -->
   <div id="cta" class="abs full">
@@ -117,8 +130,19 @@ const pad=n=>String(n).padStart(4,'0');
 const STORY=location.hash==='#story';
 // Tempi delle scene. demo(t) = secondo della registrazione mostrato all'istante t.
 const T=STORY
-  ? {hook:[0,2.4],chat:[2.4,10.4],speed:2,ag:[10.4,13.6],cy:null,pro:null,cta:[13.6,17.5]}
-  : {hook:[0,3.4],chat:[3.4,19.6],speed:1,ag:[19.6,23.8],cy:[23.8,30.0],pro:[30.0,34.0],cta:[34.0,39.5]};
+  ? {hook:[0,2.4],chat:[2.4,10.4],speed:2,ag:[10.4,13.6],cy:null,pro:[13.6,17.5],proR0:1.0,wa:null,cta:[17.5,21.5]}
+  : {hook:[0,3.4],chat:[3.4,19.6],speed:1,ag:[19.6,23.8],cy:[23.8,30.0],pro:[30.0,46.4],proR0:.6,wa:[46.4,49.2],cta:[49.2,54.5]};
+// Agenda Pro: secondo della registrazione (record_pro.js, pro_meta.json) → titolo e sottotitolo in spagnolo
+const PRO_SPEED=1.25, PRO_FRAMES=626;
+const PRO_CAPS=[
+  [0,   '💡 Consejos para vender más', 'El viernes es el día más vacío (36 %): promo «solo viernes» por WhatsApp para llenarlo.', 'tip1'],
+  [3.6, '💡 Consejos para vender más', 'El 56 % paga solo la señal: un 5 % de descuento a quien paga todo online = cobras antes.', 'tip3'],
+  [5.80, '💶 Ingresos y citas, de un vistazo', '662,50 € esta semana · ▲ 36 % respecto a la anterior', ''],
+  [8.70, '📊 Ingresos día a día', 'Toca una barra y ves el detalle', ''],
+  [11.30, '💆‍♀️ Tratamientos más pedidos', 'Cuántas veces y cuánto factura cada uno', ''],
+  [14.10, '🔥 Franjas llenas y vacías', 'Las claras son las horas que llenar con promociones', ''],
+  [17.70, '💳 Dónde está tu dinero', 'Online, en el estudio, señales retenidas… y en PDF', ''],
+];
 const demoAt=t=>.5+(t-T.chat[0])*T.speed;
 const STEPS=[[0,'1 · Elige tratamiento'],[7.8,'2 · Elige día y hora'],[10.6,'3 · Paga la señal'],[15.2,'4 · ¡Cita confirmada! ✅']];
 const CHIPS=[['k0',1.2,3.0,150,-1],['k1',4.8,6.8,90,1],['k2',8.4,10.4,170,-1],['k3',12.0,14.6,240,1],['k4',15.5,16.6,200,-1]];
@@ -168,10 +192,22 @@ window.render=function(t){
 
   // AGENDA PRO
   if(T.pro){ const [r0,r1]=T.pro, inR=t>=r0-.4&&t<r1, rOut=seg(t,r1-.35,r1);
-    set('prT', inR?eo(seg(t,r0,r0+.4))*(1-rOut):0);
-    set('ph3', inR?1-rOut:0, `translateY(${(1-eo(seg(t,r0-.4,r0+.3)))*1400}px)`);
-    f.proImg='build/agenda/f_'+pad(Math.min(209,Math.max(0,Math.round((t-r0)*1.75*30))))+'.jpg';
-  } else { set('prT',0); set('ph3',0); }
+    const r=T.proR0+Math.max(0,t-r0)*PRO_SPEED;
+    f.proImg='build/pro/f_'+pad(Math.min(PRO_FRAMES,Math.round(r*30)))+'.jpg';
+    set('proCard', inR?1-rOut:0, `translateY(${(1-eo(seg(t,r0-.4,r0+.3)))*1400}px)`);
+    const cap=PRO_CAPS.filter(c=>r>=c[0]).pop()||PRO_CAPS[0];
+    const since=(r-cap[0])/PRO_SPEED, capIn=cap[0]===0?eo(seg(t,r0,r0+.4)):eo(cl(since/.3));
+    $('proTitle').textContent=cap[1]; $('proSub').textContent=cap[2];
+    set('proHead', inR?eo(seg(t,r0,r0+.4))*(1-rOut):0);
+    set('proTitle', capIn, `translateY(${(1-capIn)*15}px)`); set('proSub', capIn);
+    ['tip1','tip3'].forEach(id=>{const on=inR&&cap[3]===id; const ph=(t*1.2)%1; set(id, on?(.45+.55*(1-ph))*capIn:0)});
+  } else { set('proHead',0); set('proCard',0); }
+  if(T.wa){ const [w0,w1]=T.wa, inW=t>=w0&&t<w1, wOut=seg(t,w1-.3,w1);
+    set('wa', inW?1:0);
+    set('waI', inW?eo(seg(t,w0,w0+.3))*(1-wOut):0, `scale(${.6+.4*back(seg(t,w0,w0+.45))})`);
+    set('waT', inW?eo(seg(t,w0+.3,w0+.65))*(1-wOut):0, `translateY(${(1-eo(seg(t,w0+.3,w0+.65)))*30}px)`);
+    set('waS', inW?eo(seg(t,w0+.6,w0+.95))*(1-wOut):0);
+  } else set('wa',0);
 
   // CTA
   const C=T.cta[0];
