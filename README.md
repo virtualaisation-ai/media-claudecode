@@ -33,6 +33,11 @@ projects/
     reel_pov_es.html     reel POV: ricerca → risultato → giornata dal pranzo al tramonto → CTA
     reel_sfx.json, scroll.json, post_caption_ES.md, build.sh
     output/              reel + copertina
+  samsara/
+    samsara_es.html      reel (39,5 s) e storia (#story, 17,5 s) dalla demo reale di samsara-bot:
+                         chat → la cita compare in agenda → promemoria/recensione/richiamo → Agenda Pro → CTA
+    record_demo.js, record_agenda.js   registrazione con orologio controllato (samsara-bot servito su :8765)
+    assets/              registrazioni e foto di Samsara; reel_sfx.json, story_sfx.json, post_caption_ES.md, build.sh
   fuerte-digitales-portfolio/
     reel_portfolio_es.html  reel "6 negocios, 6 problemas resueltos": Zé Prada, La Pulpería, Samsara,
                             Twinny · Single Fin, motore recensioni, Dream Barber Shop
