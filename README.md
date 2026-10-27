@@ -34,7 +34,8 @@ projects/
     reel_sfx.json, scroll.json, post_caption_ES.md, build.sh
     output/              reel + copertina
   fuerte-digitales-web/
-    reel_web_es.html     reel della nuova fuertedigitales.es: browser e telefono che scorrono in sincrono
+    reel_web_es.html     reel della nuova fuertedigitales.es: browser e telefono che scorrono in sincrono;
+                         con #desk la versione solo desktop
     record_site.js, scroll.json   registrazione desktop (1280×800) e mobile (390×769) con le stesse tappe
     assets/              scroll_desk.mp4, scroll_mob.mp4; reel_sfx.json, post_caption_ES.md, build.sh
   samsara/

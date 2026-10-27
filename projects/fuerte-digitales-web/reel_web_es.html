@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8">
-<!-- Reel di fuertedigitales.es: browser + telefono che scorrono in sincrono (registrazioni di record_site.js). -->
+<!-- Reel di fuertedigitales.es: browser + telefono che scorrono in sincrono (registrazioni di record_site.js).
+     Con #desk: versione solo desktop (finestra più grande, niente telefono, punti sotto la finestra). -->
 <style>
 @font-face{font-family:Inter;font-weight:400;src:url(../../shared/fonts/inter-latin-400-normal.woff2)}
 @font-face{font-family:Inter;font-weight:700;src:url(../../shared/fonts/inter-latin-700-normal.woff2)}
@@ -32,6 +33,11 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg);font-f
 .pts{left:60px;top:1180px;width:530px}
 .pt{display:flex;gap:14px;align-items:flex-start;font-size:33px;font-weight:700;line-height:1.22;margin-bottom:20px}
 .pt b{color:var(--acc);flex:none}
+.desk .win{left:40px;top:560px;width:1000px}
+.desk .view{width:1000px;height:625px}.desk .view img{width:1000px}
+.desk .bar{height:70px}.desk .url{font-size:24px}
+.desk .phone{display:none}
+.desk .pts{left:90px;top:1330px;width:900px}
 .btn{font-size:42px;font-weight:800;padding:26px 0;border-radius:999px;background:var(--ink);color:#fff;text-align:center}
 </style></head>
 <body><div id="stage">
@@ -68,6 +74,7 @@ const back=x=>{x=cl(x);const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1
 const seg=(t,a,b)=>cl((t-a)/(b-a));
 function set(id,o,tf){const e=$(id);e.style.opacity=o;if(tf!==undefined)e.style.transform=tf}
 const pad=n=>String(n).padStart(4,'0');
+const DESK=location.hash==='#desk'; if(DESK) document.body.classList.add('desk');
 const F0=1.0, FDUR=22.3, NF=668, CTA=F0+FDUR;   // la registrazione parte a F0 e dura FDUR secondi
 // [inizio nella registrazione, titolo (HTML), sottotitolo, punti]
 const CAPS=[
@@ -82,7 +89,7 @@ const CAPS=[
 let lastCap=-1;
 window.render=function(t){
   const f=Math.max(0,Math.min(FDUR,t-F0)), fi=Math.min(NF,Math.round(f*30));
-  window.__frames={deskImg:'build/desk/f_'+pad(fi)+'.jpg', mobImg:'build/mob/f_'+pad(fi)+'.jpg'};
+  window.__frames=DESK?{deskImg:'build/desk/f_'+pad(fi)+'.jpg'}:{deskImg:'build/desk/f_'+pad(fi)+'.jpg', mobImg:'build/mob/f_'+pad(fi)+'.jpg'};
   // dispositivi: entrano all'inizio, escono prima della CTA
   const out=seg(t,CTA-.2,CTA+.4);
   set('win', cl(seg(t,.1,.5))*(1-out), `translateY(${(1-eo(seg(t,.1,.8)))*500 - eo(out)*300}px)`);

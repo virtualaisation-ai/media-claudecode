@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Rigenera il reel di fuertedigitales.es (browser + telefono in sincrono).
+# Rigenera i reel di fuertedigitales.es: browser + telefono in sincrono, e versione solo desktop.
 #   ./build.sh            usa le registrazioni salvate in assets/
 #   ./build.sh --record   registra di nuovo dal sito live (serve accesso di rete a www.fuertedigitales.es)
 set -euo pipefail
@@ -18,4 +18,8 @@ node $E/render.js reel_web_es.html build/reel.mp4 29
 python3 $E/sfx.py reel_sfx.json build/reel_sfx.wav
 ffmpeg -y -loglevel error -i build/reel.mp4 -i build/reel_sfx.wav -c:v copy -c:a aac -b:a 192k -shortest -movflags +faststart output/fuerte_digitales_web_reel_ES.mp4
 node $E/render.js reel_web_es.html output/fuerte_digitales_web_reel_ES_portada.jpg 0 --still 2.6
+# versione solo desktop (stessi tempi, stessi effetti sonori)
+node $E/render.js "reel_web_es.html#desk" build/reel_desk.mp4 29
+ffmpeg -y -loglevel error -i build/reel_desk.mp4 -i build/reel_sfx.wav -c:v copy -c:a aac -b:a 192k -shortest -movflags +faststart output/fuerte_digitales_web_reel_desktop_ES.mp4
+node $E/render.js "reel_web_es.html#desk" output/fuerte_digitales_web_reel_desktop_ES_portada.jpg 0 --still 2.6
 echo "Fatto: $(ls output)"
