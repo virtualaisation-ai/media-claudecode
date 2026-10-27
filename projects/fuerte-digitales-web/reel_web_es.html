@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<!-- Reel di fuertedigitales.es: browser + telefono che scorrono in sincrono (registrazioni di record_site.js). -->
+<style>
+@font-face{font-family:Inter;font-weight:400;src:url(../../shared/fonts/inter-latin-400-normal.woff2)}
+@font-face{font-family:Inter;font-weight:700;src:url(../../shared/fonts/inter-latin-700-normal.woff2)}
+@font-face{font-family:Inter;font-weight:800;src:url(../../shared/fonts/inter-latin-800-normal.woff2)}
+@font-face{font-family:Playfair;font-weight:600;src:url(../../shared/fonts/playfair-display-latin-600-normal.woff2)}
+@font-face{font-family:Playfair;font-weight:600;font-style:italic;src:url(../../shared/fonts/playfair-display-latin-600-italic.woff2)}
+:root{--bg:#f4efe6;--ink:#16211e;--mute:#6f7772;--acc:#e0663a;--teal:#2ba3c6}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg);font-family:Inter,"Noto Color Emoji",sans-serif;color:var(--ink)}
+#stage{position:absolute;inset:0;overflow:hidden}
+.abs{position:absolute;will-change:transform,opacity}
+.full{left:0;top:0;width:1080px;height:1920px}
+.ctr{left:0;width:1080px;text-align:center}
+.it{font-family:Playfair,"Noto Color Emoji",serif;font-style:italic;font-weight:600;color:var(--acc)}
+/* finestra browser */
+.win{left:60px;top:470px;width:960px;border-radius:28px;overflow:hidden;background:#1d1f1e;box-shadow:0 40px 90px rgba(40,30,10,.28),0 0 0 1px rgba(0,0,0,.08)}
+.bar{height:66px;display:flex;align-items:center;gap:14px;padding:0 26px}
+.dot{width:16px;height:16px;border-radius:50%;background:#3a3d3b}
+.url{margin-left:28px;flex:1;max-width:560px;height:40px;border-radius:12px;background:#2c2f2d;color:#b9bdb9;font-size:22px;display:flex;align-items:center;gap:10px;padding:0 18px}
+.view{width:960px;height:600px;overflow:hidden;background:#fff}
+.view img{width:960px;display:block}
+/* telefono */
+.phone{left:616px;top:700px;width:416px;padding:16px;border-radius:60px;background:#111312;box-shadow:0 40px 90px rgba(40,30,10,.35),0 0 0 2px #2b2e2c}
+.screen{width:384px;height:757px;border-radius:46px;overflow:hidden;background:#fff}
+.screen img{width:384px;display:block}
+/* testi */
+.title{font-size:64px;font-weight:800;line-height:1.05;letter-spacing:-1px}
+.sub{font-size:30px;font-weight:700;color:var(--mute);margin-top:12px;letter-spacing:1px}
+.pts{left:60px;top:1180px;width:530px}
+.pt{display:flex;gap:14px;align-items:flex-start;font-size:33px;font-weight:700;line-height:1.22;margin-bottom:20px}
+.pt b{color:var(--acc);flex:none}
+.btn{font-size:42px;font-weight:800;padding:26px 0;border-radius:999px;background:var(--ink);color:#fff;text-align:center}
+</style></head>
+<body><div id="stage">
+  <div class="abs full" style="background:radial-gradient(ellipse at 50% 40%,#fbf8f2 0%,#f4efe6 60%,#ece4d6 100%)"></div>
+
+  <div id="cap" class="abs ctr" style="top:250px;padding:0 70px"><div id="capT" class="title"></div><div id="capS" class="sub"></div></div>
+
+  <div id="win" class="abs win">
+    <div class="bar"><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="url"><span style="font-size:18px">🔒</span>fuertedigitales.es</div></div>
+    <div class="view"><img id="deskImg" src="build/desk/f_0000.jpg"></div>
+  </div>
+  <div id="ph" class="abs phone"><div class="screen"><img id="mobImg" src="build/mob/f_0000.jpg"></div></div>
+
+  <div id="pts" class="abs pts"></div>
+
+  <div id="cta" class="abs full">
+    <div id="cLogo" class="abs ctr" style="top:300px">
+      <!-- solo l'icona del logo (la scritta originale è bianca): il nome è riscritto in scuro -->
+      <div style="width:240px;height:150px;margin:0 auto;overflow:hidden"><img src="../../shared/brand/logo_fd.png" style="width:400px;margin-left:-80px;margin-top:-18px"></div>
+      <div style="font-family:Playfair,serif;font-weight:600;font-size:64px;margin-top:14px">Fuerte Digitales</div>
+    </div>
+    <div id="cQ" class="abs ctr title" style="top:640px;font-size:84px">El primer café<br><span class="it">lo pago yo</span> ☕</div>
+    <div id="cS" class="abs ctr" style="top:900px;font-size:36px;font-weight:700;color:var(--mute);padding:0 120px;line-height:1.3">En 10 minutos te digo qué te puede ahorrar la IA.</div>
+    <div id="cB" class="abs btn" style="left:190px;width:700px;top:1060px">Escríbeme por WhatsApp →</div>
+    <div id="cU" class="abs ctr" style="top:1200px;font-size:36px;font-weight:800;letter-spacing:1px">fuertedigitales.es · @fuertedigitales</div>
+  </div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const cl=x=>Math.max(0,Math.min(1,x));
+const eo=x=>1-Math.pow(1-cl(x),3);
+const back=x=>{x=cl(x);const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const seg=(t,a,b)=>cl((t-a)/(b-a));
+function set(id,o,tf){const e=$(id);e.style.opacity=o;if(tf!==undefined)e.style.transform=tf}
+const pad=n=>String(n).padStart(4,'0');
+const F0=1.0, FDUR=22.3, NF=668, CTA=F0+FDUR;   // la registrazione parte a F0 e dura FDUR secondi
+// [inizio nella registrazione, titolo (HTML), sottotitolo, punti]
+const CAPS=[
+  [0,    'Mi nueva web<br><span class="it">ya está online</span> 🌊', 'FUERTEDIGITALES.ES', ['5 negocios de la isla ya trabajan conmigo','Web o menú QR listo en 1–2 semanas','Sin permanencia']],
+  [3.0,  'Trabajos reales,<br><span class="it">funcionando hoy</span>', 'ÁBRELOS: ESTÁN EN VIVO', ['La Pulpería · Twinny · Single Fin','Samsara Estética Avanzada','Zé Prada · Dream Barber Shop']],
+  [8.6,  'Tres cosas que<br><span class="it">tu negocio necesita</span>', 'QUÉ HAGO', ['Que te encuentren','Que te contesten','Que funcione solo']],
+  [11.6, 'Detrás hay<br><span class="it">una persona: yo</span> 👋', 'SOY YURI', ['Vivo y trabajo en Corralejo','Sin call center: hablas conmigo']],
+  [14.0, 'Precios <span class="it">claros</span>', 'SIN SORPRESAS', ['Sabes lo que pagas antes de hablar','Sin permanencia','Precio fundador para los 10 primeros']],
+  [16.6, '5,0 ★ <span class="it">en Google</span>', 'LO QUE DICEN', ['Reseñas reales de clientes de la isla']],
+  [19.2, 'Cuéntame<br><span class="it">tu negocio</span>', 'CONTACTO', ['Por WhatsApp, directo conmigo','Y Lola, mi asistente IA, resuelve tus dudas en la web']],
+];
+let lastCap=-1;
+window.render=function(t){
+  const f=Math.max(0,Math.min(FDUR,t-F0)), fi=Math.min(NF,Math.round(f*30));
+  window.__frames={deskImg:'build/desk/f_'+pad(fi)+'.jpg', mobImg:'build/mob/f_'+pad(fi)+'.jpg'};
+  // dispositivi: entrano all'inizio, escono prima della CTA
+  const out=seg(t,CTA-.2,CTA+.4);
+  set('win', cl(seg(t,.1,.5))*(1-out), `translateY(${(1-eo(seg(t,.1,.8)))*500 - eo(out)*300}px)`);
+  set('ph', cl(seg(t,.35,.75))*(1-out), `translateY(${(1-eo(seg(t,.35,1.05)))*900 + eo(out)*600}px)`);
+  // didascalie
+  const k=CAPS.reduce((a,c,i)=>f>=c[0]?i:a,0), c=CAPS[k];
+  if(k!==lastCap){ $('capT').innerHTML=c[1]; $('capS').textContent=c[2];
+    $('pts').innerHTML=c[3].map(x=>`<div class="pt"><b>✓</b><span>${x}</span></div>`).join(''); lastCap=k; }
+  const ts=k===0?F0-.6:F0+c[0], capIn=eo(seg(t,ts,ts+.35));
+  set('cap', capIn*(1-out), `translateY(${(1-capIn)*20}px)`);
+  [...$('pts').children].forEach((el,i)=>{const s=ts+.35+i*.25; el.style.opacity=eo(seg(t,s,s+.3))*(1-out); el.style.transform=`translateX(${(1-eo(seg(t,s,s+.3)))*-40}px)`;});
+  // CTA
+  $('cta').style.opacity=t>=CTA?1:0;
+  set('cLogo', eo(seg(t,CTA+.3,CTA+.7)), `scale(${.85+.15*back(seg(t,CTA+.3,CTA+.75))})`);
+  set('cQ', eo(seg(t,CTA+.6,CTA+1.0)), `translateY(${(1-eo(seg(t,CTA+.6,CTA+1.0)))*30}px)`);
+  set('cS', eo(seg(t,CTA+1.0,CTA+1.4)));
+  const pulse=t>CTA+2.0?1+.03*Math.sin((t-CTA-2.0)*7):1;
+  set('cB', eo(seg(t,CTA+1.3,CTA+1.7)), `scale(${back(seg(t,CTA+1.3,CTA+1.75))*pulse})`);
+  set('cU', eo(seg(t,CTA+1.7,CTA+2.1)));
+};
+render(0);
+</script>
+</body></html>
